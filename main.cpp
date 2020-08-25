@@ -1,36 +1,46 @@
+#include <math.h>
 #include <windows.h>
 #include <GL/glut.h>
+#include <GL/glu.h>
 
-
-//Initialize OpenGL
-void init()
+void init2D(float r, float g, float b)
 {
-    glClearColor(1.0,1.0,1.0,0.0);
-    glMatrixMode(GL_PROJECTION);
-    glOrtho(0, 40, 0, 40, 0, 20);
+    glClearColor(r,g,b,0.0);
+    glMatrixMode (GL_PROJECTION);
+    glOrtho(0.0, 200.0, 0.0, 150.0, -1, 1);
 
 }
 
-void drawLines()
+void display(void)
 {
-    glEnd();
     glClear(GL_COLOR_BUFFER_BIT);
-    glColor3f(0.0, 0.0, 1.0);
-    glBegin(GL_LINE);
-    glVertex3f(2.0, 4.0, 0.0);
-    glVertex3f(10.0, 10.0, 0.0);
+    glColor3f(1.0, 0.0, 0.0);
+
+    //draw two points
+    glBegin(GL_POINTS);
+    for(int i = 0; i < 10; i++)
+    {
+        glVertex2i(10+5*i,110);
+    }
     glEnd();
+
+    //draw a line
+    glBegin(GL_LINES);
+    glVertex2i(10,10);
+    glVertex2i(100,100);
+    glEnd();
+
     glFlush();
 }
 
-int main(int argc, char**argv)
+int main(int argc,char *argv[])
 {
-    glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
-    glutInitWindowPosition(10,10);
-    glutInitWindowSize(300,400);
-    glutCreateWindow("Example");
-    init();
-    glutDisplayFunc(drawLines);
+    glutInit(&argc,argv);
+    glutInitDisplayMode (GLUT_SINGLE | GLUT_RGB);
+    glutInitWindowSize (500, 500);
+    glutInitWindowPosition (100, 100);
+    glutCreateWindow ("points and lines");
+    init2D(0.0,0.0,0.0);
+    glutDisplayFunc(display);
     glutMainLoop();
 }
