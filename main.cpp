@@ -8,7 +8,6 @@
 #include <vector>
 
 #include <GL/glut.h>
-#include <GL/glu.h>
 #include <iostream>
 
 
@@ -726,26 +725,43 @@ void init2D(float r, float g, float b)
 void display(void)
 {
     glClearColor(0,0,0,0);
-
     glClear(GL_COLOR_BUFFER_BIT);
-
 
     engine3D.OnUserUpdate(fElapsedTime);
 
-
-
     glFlush();
 }
+
+void MyKeyboardFunc(unsigned char Key, int x, int y)
+{
+    vec3d vForward = engine3D.VectorMul(engine3D.vLookDir, 8.0f * fElapsedTime);
+
+    switch(Key)
+    {
+        case GLUT_KEY_DOWN: engine3D.vCamera.y -= 8.0f * fElapsedTime; break;
+        case GLUT_KEY_UP: engine3D.vCamera.y += 8.0f * fElapsedTime; break;
+        case GLUT_KEY_LEFT: engine3D.vCamera.x -= 8.0f * fElapsedTime; break;
+        case GLUT_KEY_RIGHT: engine3D.vCamera.x += 8.0f * fElapsedTime; break;
+        case 'a': engine3D.fYaw -= 1.0f * fElapsedTime; break;
+        case 'q': engine3D.fYaw += 1.0f * fElapsedTime; break;
+        case 'w': engine3D.vCamera = engine3D.VectorAdd(engine3D.vCamera, vForward); break;
+        case 's': engine3D.vCamera = engine3D.VectorSub(engine3D.vCamera, vForward); break;
+    };
+}
+
+
 
 int main(int argc,char *argv[])
 {
     engine3D.OnUserCreate();
     glutInit(&argc,argv);
+    glutKeyboardFunc(MyKeyboardFunc);
     glutInitDisplayMode (GLUT_SINGLE | GLUT_RGB);
     glutInitWindowSize (500, 500);
     glutInitWindowPosition (100, 100);
     glutCreateWindow ("points and lines");
     init2D(0.0,0.0,0.0);
     glutDisplayFunc(display);
+
     glutMainLoop();
 }
