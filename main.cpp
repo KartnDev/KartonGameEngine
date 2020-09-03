@@ -13,6 +13,8 @@
 
 using namespace std;
 
+
+
 struct vec3d
 {
     float x = 0.0f;
@@ -44,7 +46,7 @@ void DrawTriangle(GLfloat x1, GLfloat y1, GLfloat x2, GLfloat y2, GLfloat x3, GL
 {
     glBegin(GL_TRIANGLES);
 
-    glColor3f(255 * depth, 255 * depth, 255 * depth);
+    glColor3f(depth, depth, depth);
 
     glVertex2f(x1, y1);
     glVertex2f(x2, y2);
@@ -52,8 +54,6 @@ void DrawTriangle(GLfloat x1, GLfloat y1, GLfloat x2, GLfloat y2, GLfloat x3, GL
 
     glEnd();
 }
-
-
 
 
 struct mesh
@@ -463,7 +463,7 @@ public:
 
         auto res = textureMesh.LoadFromObjectFile(defPath + mountains);
 
-        if(res == false)
+        if (res == false)
         {
             cout << "FALSE" << endl;
         }
@@ -653,7 +653,7 @@ public:
 
 
                         case 1:
-                            nTrisToAdd = TriangleClipAgainstPlane({0.0f, (float)(height - 1), 0.0f},
+                            nTrisToAdd = TriangleClipAgainstPlane({0.0f, (float) (height - 1), 0.0f},
                                                                   {0.0f, -1.0f, 0.0f},
                                                                   test,
                                                                   clipped[0],
@@ -671,7 +671,7 @@ public:
 
 
                         case 3:
-                            nTrisToAdd = TriangleClipAgainstPlane({(float)(width - 1), 0.0f, 0.0f},
+                            nTrisToAdd = TriangleClipAgainstPlane({(float) (width - 1), 0.0f, 0.0f},
                                                                   {-1.0f, 0.0f, 0.0f},
                                                                   test,
                                                                   clipped[0],
@@ -695,73 +695,87 @@ public:
             for (auto &t : listTriangles)
             {
                 DrawTriangle(t.p[0].x, t.p[0].y, t.p[1].x, t.p[1].y, t.p[2].x, t.p[2].y, t.triangleColor);
-#ifdef DEBUG
+            #ifdef DEBUG
                 DrawTriangle(window, t.p[0].x, t.p[0].y, t.p[1].x, t.p[1].y, t.p[2].x, t.p[2].y);
-#endif
+            #endif
             }
         }
-
-
         return true;
     }
 
 };
 
 
-
-
 olcEngine3D engine3D(640, 480);
 const float fElapsedTime = 0.1f;
 
 
-
 void init2D(float r, float g, float b)
 {
-    glClearColor(r,g,b,0.0);
-    glMatrixMode (GL_PROJECTION);
+    glClearColor(r, g, b, 0.0);
+    glMatrixMode(GL_PROJECTION);
     glOrtho(0, 640, 480, 0, -1, 1);
 }
 
 void display(void)
 {
-    glClearColor(0,0,0,0);
+    glClearColor(0, 0, 0, 0);
     glClear(GL_COLOR_BUFFER_BIT);
-
     engine3D.OnUserUpdate(fElapsedTime);
-
     glFlush();
 }
+
+
 
 void MyKeyboardFunc(unsigned char Key, int x, int y)
 {
     vec3d vForward = engine3D.VectorMul(engine3D.vLookDir, 8.0f * fElapsedTime);
 
-    switch(Key)
+    switch (Key)
     {
-        case GLUT_KEY_DOWN: engine3D.vCamera.y -= 8.0f * fElapsedTime; break;
-        case GLUT_KEY_UP: engine3D.vCamera.y += 8.0f * fElapsedTime; break;
-        case GLUT_KEY_LEFT: engine3D.vCamera.x -= 8.0f * fElapsedTime; break;
-        case GLUT_KEY_RIGHT: engine3D.vCamera.x += 8.0f * fElapsedTime; break;
-        case 'a': engine3D.fYaw -= 1.0f * fElapsedTime; break;
-        case 'q': engine3D.fYaw += 1.0f * fElapsedTime; break;
-        case 'w': engine3D.vCamera = engine3D.VectorAdd(engine3D.vCamera, vForward); break;
-        case 's': engine3D.vCamera = engine3D.VectorSub(engine3D.vCamera, vForward); break;
+        case '2':
+            engine3D.vCamera.y -= 8.0f * fElapsedTime;
+            break;
+        case '8':
+            engine3D.vCamera.y += 8.0f * fElapsedTime;
+            break;
+        case '4':
+            engine3D.vCamera.x -= 8.0f * fElapsedTime;
+            break;
+        case '6':
+            engine3D.vCamera.x += 8.0f * fElapsedTime;
+            break;
+        case 'a':
+            engine3D.fYaw -= 1.0f * fElapsedTime;
+            break;
+        case 'd':
+            engine3D.fYaw += 1.0f * fElapsedTime;
+            break;
+        case 'w':
+            engine3D.vCamera = engine3D.VectorAdd(engine3D.vCamera, vForward);
+            break;
+        case 's':
+            engine3D.vCamera = engine3D.VectorSub(engine3D.vCamera, vForward);
+            break;
     };
 }
 
 
-
-int main(int argc,char *argv[])
+int main(int argc, char *argv[])
 {
     engine3D.OnUserCreate();
-    glutInit(&argc,argv);
-    glutKeyboardFunc(MyKeyboardFunc);
-    glutInitDisplayMode (GLUT_SINGLE | GLUT_RGB);
-    glutInitWindowSize (500, 500);
-    glutInitWindowPosition (100, 100);
-    glutCreateWindow ("points and lines");
-    init2D(0.0,0.0,0.0);
+    glutInit(&argc, argv);
+
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+    glutInitWindowSize(500, 500);
+    glutInitWindowPosition(100, 100);
+    glutCreateWindow("points and lines");
+
+
     glutDisplayFunc(display);
+    glutKeyboardFunc(MyKeyboardFunc);
+    glutIdleFunc(display);
+    init2D(0.0, 0.0, 0.0);
 
     glutMainLoop();
 }
