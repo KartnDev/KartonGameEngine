@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <list>
 #include <vector>
+#include <thread>
 
 #include <GL/glut.h>
 #include <iostream>
@@ -13,6 +14,11 @@
 
 using namespace std;
 
+struct vec2d
+{
+    float u = 0.0f;
+    float v = 0.0f;
+};
 
 
 struct vec3d
@@ -26,6 +32,7 @@ struct vec3d
 struct triangle
 {
     vec3d p[3];
+    vec2d t[3];
     float triangleColor;
 };
 
@@ -331,14 +338,14 @@ public:
         return v;
     }
 
-    vec3d VectorIntersectPlane(vec3d &planeForward, vec3d &planeNormal, vec3d &lineStart, vec3d &lineEnd)
+    vec3d VectorIntersectPlane(vec3d &planeForward, vec3d &planeNormal, vec3d &lineStart, vec3d &lineEnd, float &t)
     {
         planeNormal = VectorNormalise(planeNormal);
 
         float planeDot = -VectorDotProduct(planeNormal, planeForward);
         float firstSide = VectorDotProduct(lineStart, planeNormal);
         float secondSide = VectorDotProduct(lineEnd, planeNormal);
-        float t = (-planeDot - firstSide) / (secondSide - firstSide);
+        t = (-planeDot - firstSide) / (secondSide - firstSide);
 
         vec3d lineStartToEnd = VectorSub(lineEnd, lineStart);
         vec3d lineToIntersect = VectorMul(lineStartToEnd, t);
@@ -360,28 +367,33 @@ public:
 
         // Create two temporary storage arrays to classify points either side of plane
         // If distance sign is positive, point lies on "inside" of plane
-        vec3d *inside_points[3];
-        int nInsidePointCount = 0;
-        vec3d *outside_points[3];
-        int nOutsidePointCount = 0;
+        vec3d* inside_points[3];  int nInsidePointCount = 0;
+        vec3d* outside_points[3]; int nOutsidePointCount = 0;
+        vec2d* inside_tex[3]; int nInsideTexCount = 0;
+        vec2d* outside_tex[3]; int nOutsideTexCount = 0;
+
 
         // Get signed distance of each point in triangle to plane
         float d0 = dist(in_tri.p[0]);
         float d1 = dist(in_tri.p[1]);
         float d2 = dist(in_tri.p[2]);
 
-        if (d0 >= 0)
-        { inside_points[nInsidePointCount++] = &in_tri.p[0]; }
-        else
-        { outside_points[nOutsidePointCount++] = &in_tri.p[0]; }
-        if (d1 >= 0)
-        { inside_points[nInsidePointCount++] = &in_tri.p[1]; }
-        else
-        { outside_points[nOutsidePointCount++] = &in_tri.p[1]; }
-        if (d2 >= 0)
-        { inside_points[nInsidePointCount++] = &in_tri.p[2]; }
-        else
-        { outside_points[nOutsidePointCount++] = &in_tri.p[2]; }
+        if (d0 >= 0) { inside_points[nInsidePointCount++] = &in_tri.p[0]; inside_tex[nInsideTexCount++] = &in_tri.t[0]; }
+        else {
+            outside_points[nOutsidePointCount++] = &in_tri.p[0]; outside_tex[nOutsideTexCount++] = &in_tri.t[0];
+        }
+        if (d1 >= 0) {
+            inside_points[nInsidePointCount++] = &in_tri.p[1]; inside_tex[nInsideTexCount++] = &in_tri.t[1];
+        }
+        else {
+            outside_points[nOutsidePointCount++] = &in_tri.p[1];  outside_tex[nOutsideTexCount++] = &in_tri.t[1];
+        }
+        if (d2 >= 0) {
+            inside_points[nInsidePointCount++] = &in_tri.p[2]; inside_tex[nInsideTexCount++] = &in_tri.t[2];
+        }
+        else {
+            outside_points[nOutsidePointCount++] = &in_tri.p[2];  outside_tex[nOutsideTexCount++] = &in_tri.t[2];
+        }
 
         // Now classify triangle points, and break the input triangle into
         // smaller output triangles if required. There are four possible
@@ -410,15 +422,22 @@ public:
             // the plane, the triangle simply becomes a smaller triangle
 
             // Copy appearance info to new triangle
-            out_tri1.triangleColor = in_tri.triangleColor;
+            out_tri1.triangleColor =  in_tri.triangleColor;
 
             // The inside point is valid, so keep that...
             out_tri1.p[0] = *inside_points[0];
+            out_tri1.t[0] = *inside_tex[0];
 
             // but the two new points are at the locations where the
             // original sides of the triangle (lines) intersect with the plane
-            out_tri1.p[1] = VectorIntersectPlane(plane_p, plane_n, *inside_points[0], *outside_points[0]);
-            out_tri1.p[2] = VectorIntersectPlane(plane_p, plane_n, *inside_points[0], *outside_points[1]);
+            float t;
+            out_tri1.p[1] = VectorIntersectPlane(plane_p, plane_n, *inside_points[0], *outside_points[0], t);
+            out_tri1.t[1].u = t * (outside_tex[0]->u - inside_tex[0]->u) + inside_tex[0]->u;
+            out_tri1.t[1].v = t * (outside_tex[0]->v - inside_tex[0]->v) + inside_tex[0]->v;
+
+            out_tri1.p[2] = VectorIntersectPlane(plane_p, plane_n, *inside_points[0], *outside_points[1], t);
+            out_tri1.t[2].u = t * (outside_tex[1]->u - inside_tex[0]->u) + inside_tex[0]->u;
+            out_tri1.t[2].v = t * (outside_tex[1]->v - inside_tex[0]->v) + inside_tex[0]->v;
 
             return 1; // Return the newly formed single triangle
         }
@@ -430,24 +449,33 @@ public:
             // represent a quad with two new triangles
 
             // Copy appearance info to new triangles
-            out_tri1.triangleColor = in_tri.triangleColor;
+            out_tri1.triangleColor =  in_tri.triangleColor;
 
-            out_tri2.triangleColor = in_tri.triangleColor;
+            out_tri2.triangleColor =  in_tri.triangleColor;
 
             // The first triangle consists of the two inside points and a new
             // point determined by the location where one side of the triangle
             // intersects with the plane
             out_tri1.p[0] = *inside_points[0];
             out_tri1.p[1] = *inside_points[1];
-            out_tri1.p[2] = VectorIntersectPlane(plane_p, plane_n, *inside_points[0], *outside_points[0]);
+            out_tri1.t[0] = *inside_tex[0];
+            out_tri1.t[1] = *inside_tex[1];
+
+            float t;
+            out_tri1.p[2] = VectorIntersectPlane(plane_p, plane_n, *inside_points[0], *outside_points[0], t);
+            out_tri1.t[2].u = t * (outside_tex[0]->u - inside_tex[0]->u) + inside_tex[0]->u;
+            out_tri1.t[2].v = t * (outside_tex[0]->v - inside_tex[0]->v) + inside_tex[0]->v;
 
             // The second triangle is composed of one of he inside points, a
             // new point determined by the intersection of the other side of the
             // triangle and the plane, and the newly created point above
             out_tri2.p[0] = *inside_points[1];
+            out_tri2.t[0] = *inside_tex[1];
             out_tri2.p[1] = out_tri1.p[2];
-            out_tri2.p[2] = VectorIntersectPlane(plane_p, plane_n, *inside_points[1], *outside_points[0]);
-
+            out_tri2.t[1] = out_tri1.t[2];
+            out_tri2.p[2] = VectorIntersectPlane(plane_p, plane_n, *inside_points[1], *outside_points[0], t);
+            out_tri2.t[2].u = t * (outside_tex[0]->u - inside_tex[1]->u) + inside_tex[1]->u;
+            out_tri2.t[2].v = t * (outside_tex[0]->v - inside_tex[1]->v) + inside_tex[1]->v;
             return 2; // Return two newly formed triangles which form a quad
         }
     }
@@ -460,13 +488,35 @@ public:
 
         string mountains = "mountains.obj";
 
+        //textureMesh.LoadFromObjectFile(defPath + mountains);
 
-        auto res = textureMesh.LoadFromObjectFile(defPath + mountains);
+        textureMesh.tris = {
 
-        if (res == false)
-        {
-            cout << "FALSE" << endl;
-        }
+                // SOUTH
+                {0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f,},
+                {0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f,},
+
+                // EAST
+                {1.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f,},
+                {1.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f,},
+
+                // NORTH
+                {1.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f,},
+                {1.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f,},
+
+                // WEST
+                {0.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f,},
+                {0.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f,},
+
+                // TOP
+                {0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f,},
+                {0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f,},
+
+                // BOTTOM
+                {1.0f, 0.0f, 1.0f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f,},
+                {1.0f, 0.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 1.0f,},
+
+        };
 
 
         matProj = MatrixMakeProjection(90.0f, (float) height / width, 0.1f, 1000.0f);
@@ -514,6 +564,10 @@ public:
             triTransformed.p[0] = MatrixMultiplyVector(matWorld, tri.p[0]);
             triTransformed.p[1] = MatrixMultiplyVector(matWorld, tri.p[1]);
             triTransformed.p[2] = MatrixMultiplyVector(matWorld, tri.p[2]);
+            triTransformed.t[0] = tri.t[0];
+            triTransformed.t[1] = tri.t[1];
+            triTransformed.t[2] = tri.t[2];
+
 
             // Calculate triangle Normal
             vec3d normal, line1, line2;
@@ -548,6 +602,9 @@ public:
                 triViewed.p[0] = MatrixMultiplyVector(matView, triTransformed.p[0]);
                 triViewed.p[1] = MatrixMultiplyVector(matView, triTransformed.p[1]);
                 triViewed.p[2] = MatrixMultiplyVector(matView, triTransformed.p[2]);
+                triViewed.t[0] = triTransformed.t[0];
+                triViewed.t[1] = triTransformed.t[1];
+                triViewed.t[2] = triTransformed.t[2];
                 triViewed.triangleColor = triTransformed.triangleColor;
 
 
@@ -604,14 +661,14 @@ public:
                 }
             }
         }
-
-        // Sort triangles from back to front
-        sort(vecTrianglesToRaster.begin(), vecTrianglesToRaster.end(), [](triangle &t1, triangle &t2)
-        {
-            float z1 = (t1.p[0].z + t1.p[1].z + t1.p[2].z) / 3.0f;
-            float z2 = (t2.p[0].z + t2.p[1].z + t2.p[2].z) / 3.0f;
-            return z1 > z2;
-        });
+//
+//        // Sort triangles from back to front
+//        sort(vecTrianglesToRaster.begin(), vecTrianglesToRaster.end(), [](triangle &t1, triangle &t2)
+//        {
+//            float z1 = (t1.p[0].z + t1.p[1].z + t1.p[2].z) / 3.0f;
+//            float z2 = (t2.p[0].z + t2.p[1].z + t2.p[2].z) / 3.0f;
+//            return z1 > z2;
+//        });
 
         // Loop through all transformed, viewed, projected, and sorted triangles
         for (auto &triToRaster : vecTrianglesToRaster)
@@ -695,9 +752,6 @@ public:
             for (auto &t : listTriangles)
             {
                 DrawTriangle(t.p[0].x, t.p[0].y, t.p[1].x, t.p[1].y, t.p[2].x, t.p[2].y, t.triangleColor);
-            #ifdef DEBUG
-                DrawTriangle(window, t.p[0].x, t.p[0].y, t.p[1].x, t.p[1].y, t.p[2].x, t.p[2].y);
-            #endif
             }
         }
         return true;
@@ -717,7 +771,8 @@ void init2D(float r, float g, float b)
     glOrtho(0, 640, 480, 0, -1, 1);
 }
 
-void display(void)
+
+void repaint()
 {
     glClearColor(0, 0, 0, 0);
     glClear(GL_COLOR_BUFFER_BIT);
@@ -725,6 +780,13 @@ void display(void)
     glFlush();
 }
 
+void display(void)
+{
+    glClearColor(0, 0, 0, 0);
+    glClear(GL_COLOR_BUFFER_BIT);
+    engine3D.OnUserUpdate(fElapsedTime);
+    glFlush();
+}
 
 
 void MyKeyboardFunc(unsigned char Key, int x, int y)
@@ -774,7 +836,7 @@ int main(int argc, char *argv[])
 
     glutDisplayFunc(display);
     glutKeyboardFunc(MyKeyboardFunc);
-    glutIdleFunc(display);
+    glutIdleFunc(repaint);
     init2D(0.0, 0.0, 0.0);
 
     glutMainLoop();
