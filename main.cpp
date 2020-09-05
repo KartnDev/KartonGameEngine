@@ -14,25 +14,26 @@
 
 using namespace std;
 
+// Created a 2D structure to hold texture coordinates
 struct vec2d
 {
-    float u = 0.0f;
-    float v = 0.0f;
+    float u = 0;
+    float v = 0;
 };
-
 
 struct vec3d
 {
-    float x = 0.0f;
-    float y = 0.0f;
-    float z = 0.0f;
-    float w = 1.0f; // Need a 4th term to perform sensible matrix vector multiplication
+    float x = 0;
+    float y = 0;
+    float z = 0;
+    float w = 1; // Need a 4th term to perform sensible matrix vector multiplication
 };
+
 
 struct triangle
 {
     vec3d p[3];
-    vec2d t[3];
+    vec2d t[3]; // added a texture coord per vertex
     float triangleColor;
 };
 
@@ -488,35 +489,7 @@ public:
 
         string mountains = "mountains.obj";
 
-        //textureMesh.LoadFromObjectFile(defPath + mountains);
-
-        textureMesh.tris = {
-
-                // SOUTH
-                {0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f,},
-                {0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f,},
-
-                // EAST
-                {1.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f,},
-                {1.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f,},
-
-                // NORTH
-                {1.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f,},
-                {1.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f,},
-
-                // WEST
-                {0.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f,},
-                {0.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f,},
-
-                // TOP
-                {0.0f, 1.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f,},
-                {0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f,},
-
-                // BOTTOM
-                {1.0f, 0.0f, 1.0f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f,},
-                {1.0f, 0.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f, 1.0f,},
-
-        };
+        textureMesh.LoadFromObjectFile(defPath + mountains);
 
 
         matProj = MatrixMakeProjection(90.0f, (float) height / width, 0.1f, 1000.0f);
@@ -661,14 +634,14 @@ public:
                 }
             }
         }
-//
-//        // Sort triangles from back to front
-//        sort(vecTrianglesToRaster.begin(), vecTrianglesToRaster.end(), [](triangle &t1, triangle &t2)
-//        {
-//            float z1 = (t1.p[0].z + t1.p[1].z + t1.p[2].z) / 3.0f;
-//            float z2 = (t2.p[0].z + t2.p[1].z + t2.p[2].z) / 3.0f;
-//            return z1 > z2;
-//        });
+
+        // Sort triangles from back to front
+       sort(vecTrianglesToRaster.begin(), vecTrianglesToRaster.end(), [](triangle &t1, triangle &t2)
+       {
+            float z1 = (t1.p[0].z + t1.p[1].z + t1.p[2].z) / 3.0f;
+            float z2 = (t2.p[0].z + t2.p[1].z + t2.p[2].z) / 3.0f;
+            return z1 > z2;
+        });
 
         // Loop through all transformed, viewed, projected, and sorted triangles
         for (auto &triToRaster : vecTrianglesToRaster)
