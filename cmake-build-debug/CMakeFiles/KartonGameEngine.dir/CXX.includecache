@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Dmitry/Documents/GitHub/KartonGameEngine/KartonGameEngine/main.cpp
+windows.h
+-
+cmath
+-
+string
+-
+fstream
+-
+strstream
+-
+algorithm
+-
+list
+-
+vector
+-
+thread
+-
+GL/glut.h
+-
+iostream
+-
+
