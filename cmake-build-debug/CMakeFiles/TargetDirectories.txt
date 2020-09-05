@@ -1,3 +1,0 @@
-C:/Users/Dmitry/Documents/GitHub/KartonGameEngine/cmake-build-debug/CMakeFiles/KartonGameEngine.dir
-C:/Users/Dmitry/Documents/GitHub/KartonGameEngine/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Dmitry/Documents/GitHub/KartonGameEngine/cmake-build-debug/CMakeFiles/rebuild_cache.dir
