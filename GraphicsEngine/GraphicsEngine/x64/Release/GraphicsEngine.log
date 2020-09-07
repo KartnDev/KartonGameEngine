@@ -1,0 +1,29 @@
+﻿  matrix3x3.cpp
+  main.cpp
+  vector3d.cpp
+c:\users\dmitry\documents\github\kartongameengine\graphicsengine\graphicsengine\source files\math utilities\matrix3x3.h(8): error C3646: 'row': unknown override specifier (compiling source file Source Files\Math Utilities\matrix3x3.cpp)
+c:\users\dmitry\documents\github\kartongameengine\graphicsengine\graphicsengine\source files\math utilities\matrix3x3.h(8): error C2143: syntax error: missing ',' before '[' (compiling source file Source Files\Math Utilities\matrix3x3.cpp)
+c:\users\dmitry\documents\github\kartongameengine\graphicsengine\graphicsengine\source files\math utilities\matrix3x3.h(8): error C2143: syntax error: missing ')' before ';' (compiling source file Source Files\Math Utilities\matrix3x3.cpp)
+c:\users\dmitry\documents\github\kartongameengine\graphicsengine\graphicsengine\source files\math utilities\matrix3x3.h(8): error C2238: unexpected token(s) preceding ';' (compiling source file Source Files\Math Utilities\matrix3x3.cpp)
+c:\users\dmitry\documents\github\kartongameengine\graphicsengine\graphicsengine\source files\math utilities\matrix3x3.h(41): error C2535: 'matrix3x3 matrix3x3::operator +(const vector3d &)': member function already defined or declared (compiling source file Source Files\Math Utilities\matrix3x3.cpp)
+  c:\users\dmitry\documents\github\kartongameengine\graphicsengine\graphicsengine\source files\math utilities\matrix3x3.h(38): note: see declaration of 'matrix3x3::operator +' (compiling source file Source Files\Math Utilities\matrix3x3.cpp)
+c:\users\dmitry\documents\github\kartongameengine\graphicsengine\graphicsengine\source files\math utilities\matrix3x3.h(44): error C2535: 'matrix3x3 matrix3x3::operator +(const vector3d &)': member function already defined or declared (compiling source file Source Files\Math Utilities\matrix3x3.cpp)
+  c:\users\dmitry\documents\github\kartongameengine\graphicsengine\graphicsengine\source files\math utilities\matrix3x3.h(38): note: see declaration of 'matrix3x3::operator +' (compiling source file Source Files\Math Utilities\matrix3x3.cpp)
+c:\users\dmitry\documents\github\kartongameengine\graphicsengine\graphicsengine\source files\math utilities\matrix3x3.h(47): error C2535: 'matrix3x3 matrix3x3::operator +(const vector3d &)': member function already defined or declared (compiling source file Source Files\Math Utilities\matrix3x3.cpp)
+  c:\users\dmitry\documents\github\kartongameengine\graphicsengine\graphicsengine\source files\math utilities\matrix3x3.h(38): note: see declaration of 'matrix3x3::operator +' (compiling source file Source Files\Math Utilities\matrix3x3.cpp)
+c:\users\dmitry\documents\github\kartongameengine\graphicsengine\graphicsengine\source files\math utilities\matrix3x3.cpp(18): error C2039: 'row': is not a member of 'matrix3x3'
+  c:\users\dmitry\documents\github\kartongameengine\graphicsengine\graphicsengine\source files\math utilities\matrix3x3.h(5): note: see declaration of 'matrix3x3'
+c:\users\dmitry\documents\github\kartongameengine\graphicsengine\graphicsengine\source files\math utilities\matrix3x3.cpp(18): error C2660: '_mm256_mul_ps': function does not take 1 arguments
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.16.27023\include\immintrin.h(351): note: see declaration of '_mm256_mul_ps' (compiling source file Source Files\Math Utilities\matrix3x3.cpp)
+c:\users\dmitry\documents\github\kartongameengine\graphicsengine\graphicsengine\source files\math utilities\matrix3x3.cpp(19): error C2039: 'row': is not a member of 'matrix3x3'
+  c:\users\dmitry\documents\github\kartongameengine\graphicsengine\graphicsengine\source files\math utilities\matrix3x3.h(5): note: see declaration of 'matrix3x3'
+c:\users\dmitry\documents\github\kartongameengine\graphicsengine\graphicsengine\source files\math utilities\matrix3x3.cpp(19): error C2660: '_mm256_mul_ps': function does not take 1 arguments
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.16.27023\include\immintrin.h(351): note: see declaration of '_mm256_mul_ps' (compiling source file Source Files\Math Utilities\matrix3x3.cpp)
+c:\users\dmitry\documents\github\kartongameengine\graphicsengine\graphicsengine\source files\math utilities\matrix3x3.cpp(19): error C2660: '_mm256_add_ps': function does not take 1 arguments
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.16.27023\include\immintrin.h(116): note: see declaration of '_mm256_add_ps' (compiling source file Source Files\Math Utilities\matrix3x3.cpp)
+c:\users\dmitry\documents\github\kartongameengine\graphicsengine\graphicsengine\source files\math utilities\matrix3x3.cpp(20): error C2039: 'row': is not a member of 'matrix3x3'
+  c:\users\dmitry\documents\github\kartongameengine\graphicsengine\graphicsengine\source files\math utilities\matrix3x3.h(5): note: see declaration of 'matrix3x3'
+c:\users\dmitry\documents\github\kartongameengine\graphicsengine\graphicsengine\source files\math utilities\matrix3x3.cpp(20): error C2660: '_mm256_mul_ps': function does not take 1 arguments
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.16.27023\include\immintrin.h(351): note: see declaration of '_mm256_mul_ps' (compiling source file Source Files\Math Utilities\matrix3x3.cpp)
+c:\users\dmitry\documents\github\kartongameengine\graphicsengine\graphicsengine\source files\math utilities\matrix3x3.cpp(20): error C2660: '_mm256_add_ps': function does not take 1 arguments
+  c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.16.27023\include\immintrin.h(116): note: see declaration of '_mm256_add_ps' (compiling source file Source Files\Math Utilities\matrix3x3.cpp)

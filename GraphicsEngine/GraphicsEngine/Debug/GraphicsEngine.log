@@ -1,0 +1,3 @@
+﻿  main.cpp
+c:\users\dmitry\documents\github\kartongameengine\graphicsengine\graphicsengine\source files\main.cpp(29): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+  GraphicsEngine.vcxproj -> C:\Users\Dmitry\Documents\GitHub\KartonGameEngine\GraphicsEngine\Debug\GraphicsEngine.exe

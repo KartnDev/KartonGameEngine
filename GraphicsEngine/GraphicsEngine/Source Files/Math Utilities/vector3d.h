@@ -1,7 +1,4 @@
-#include <cmath>
-
 #include "../Common/FXTypes.h"
-
 
 struct vector3d
 {
