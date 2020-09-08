@@ -1,5 +1,5 @@
-#include "../Common/pchdr.h"
-#include "vector3d.h"
+#include "CommonMathPreHeader.h"
+
 
 
 struct matrix4x4

@@ -1,12 +1,9 @@
-﻿  matrix3x3.cpp
-  main.cpp
-c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.16.27023\include\xlocale(319): warning C4530: C++ exception handler used, but unwind semantics are not enabled. Specify /EHsc (compiling source file Source Files\Math Utilities\matrix3x3.cpp)
-c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.16.27023\include\xlocale(319): warning C4530: C++ exception handler used, but unwind semantics are not enabled. Specify /EHsc (compiling source file Source Files\main.cpp)
+﻿  main.cpp
+c:\program files (x86)\microsoft visual studio\2017\enterprise\vc\tools\msvc\14.16.27023\include\xlocale(319): warning C4530: C++ exception handler used, but unwind semantics are not enabled. Specify /EHsc
 c:\users\dmitry\documents\github\kartongameengine\graphicsengine\graphicsengine\source files\main.cpp(10): warning C4244: '=': conversion from 'int' to 'FloatFX', possible loss of data
   Generating code
-c:\users\dmitry\documents\github\kartongameengine\graphicsengine\graphicsengine\source files\math utilities\matrix3x3.cpp(101): warning C4172: returning address of local variable or temporary: temp
-  11 of 16 functions (68.8%) were compiled, the rest were copied from previous compilation.
-    2 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
+  1 of 16 functions ( 6.3%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   GraphicsEngine.vcxproj -> C:\Users\Dmitry\Documents\GitHub\KartonGameEngine\GraphicsEngine\x64\Release\GraphicsEngine.exe

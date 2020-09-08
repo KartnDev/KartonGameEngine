@@ -26,6 +26,7 @@
     <ClCompile Include="Source Files\Math Utilities\vector3d.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source Files\Math Utilities\CommonMathPreHeader.h" />
     <ClInclude Include="Source Files\Math Utilities\matrix4x4.h" />
     <ClInclude Include="Source Files\Common\FXTypes.h" />
     <ClInclude Include="Source Files\Math Utilities\matrix3x3.h" />
