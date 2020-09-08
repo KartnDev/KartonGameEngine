@@ -11,15 +11,17 @@ struct matrix3x3
 	__m128 row[3];
 
 
-	void MatMul(const matrix3x3& rhs);
+	void MatMul(matrix3x3& rhs);
 	void MatMulVector(const matrix3x3& rhs);
 
 	void MatAdd(const matrix3x3& rhs);
 
-	void ScalarMul(FloatFX rhs);
+	void ScalarMul(FloatFX scalar);
+	void ScalarAdd(FloatFX scalar);
 	void operator+=(FloatFX rhs);
+	void operator*=(FloatFX rhs);
 
-	FloatFX Det() const;
+	inline FloatFX Det() const;
 
 	matrix3x3& Inverse() const;
 
