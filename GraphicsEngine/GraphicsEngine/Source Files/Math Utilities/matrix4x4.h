@@ -19,6 +19,11 @@ struct matrix4x4
 	inline FloatFX Det() const;
 
 	matrix4x4& Inverse() const;
+	void InverseSelf();
+
+
+	void TransposeSelf();
+	matrix4x4& Transpose();
 
 	void operator*=(const matrix4x4& rhs);
 	void operator+=(const matrix4x4& rhs);

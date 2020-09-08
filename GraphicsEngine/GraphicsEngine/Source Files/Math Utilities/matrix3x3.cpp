@@ -177,17 +177,17 @@ void matrix3x3::operator-=(const matrix3x3 & rhs)
 	MatSub(rhs);
 }
 
-matrix3x3 matrix3x3::operator+(const matrix3x3 & rhs)
+matrix3x3& matrix3x3::operator+(const matrix3x3 & rhs)
 {
 	return MatAddAlg(*this, rhs);
 }
 
-matrix3x3 matrix3x3::operator-(const matrix3x3 & rhs)
+matrix3x3& matrix3x3::operator-(const matrix3x3 & rhs)
 {
 	return MatSubAlg(*this, rhs);
 }
 
-matrix3x3 matrix3x3::operator*(const matrix3x3 & rhs)
+matrix3x3& matrix3x3::operator*(const matrix3x3 & rhs)
 {
 	return MatMulAlg(*this, rhs);
 }

@@ -16,16 +16,21 @@ struct matrix3x3
 	void operator+=(FloatFX rhs);
 	void operator*=(FloatFX rhs);
 
+	void TransposeSelf();
+	matrix3x3& Transpose();
+
+
 	inline FloatFX Det() const;
 
 	matrix3x3& Inverse() const;
+	void InverseSelf();
 
 	void operator*=(const matrix3x3& rhs);
 	void operator+=(const matrix3x3& rhs);
 	void operator-=(const matrix3x3& rhs);
 
-	matrix3x3 operator+(const matrix3x3& rhs);
-	matrix3x3 operator-(const matrix3x3& rhs);
-	matrix3x3 operator*(const matrix3x3& rhs);
+	matrix3x3& operator+(const matrix3x3& rhs);
+	matrix3x3& operator-(const matrix3x3& rhs);
+	matrix3x3& operator*(const matrix3x3& rhs);
 };
 
