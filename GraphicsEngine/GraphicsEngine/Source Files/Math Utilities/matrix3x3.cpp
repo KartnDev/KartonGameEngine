@@ -57,7 +57,34 @@ void mmul_tiled_avx_unrolled(const int n, const float *left, const float *right,
 }
 
 
-void matrix3x3::MatMul(matrix3x3 & rhs)
+
+matrix3x3& MatAddAlg(const matrix3x3 & lhs, const matrix3x3 & rhs)
+{
+	matrix3x3 res;
+	for (size_t i = 0; i < 3; i++)
+	{
+		for (size_t j = 0; j < 3; j++)
+		{
+			res.mat[i][j] = lhs.mat[i][j] + rhs.mat[i][j];
+		}
+	}
+	return res;
+}
+
+matrix3x3& MatSubAlg(const matrix3x3 & lhs, const matrix3x3 & rhs)
+{
+	matrix3x3 res;
+	for (size_t i = 0; i < 3; i++)
+	{
+		for (size_t j = 0; j < 3; j++)
+		{
+			res.mat[i][j] = lhs.mat[i][j] + rhs.mat[i][j];
+		}
+	}
+	return res;
+}
+
+matrix3x3& MatMulAlg(const matrix3x3 & lhs, const matrix3x3 & rhs)
 {
 	matrix3x3 temp;
 
@@ -67,23 +94,28 @@ void matrix3x3::MatMul(matrix3x3 & rhs)
 		{
 			for (int k = 0; k < 3; k++)
 			{
-				temp.mat[i][j] += this->mat[i][k] * rhs.mat[k][j];
+				temp.mat[i][j] += lhs.mat[i][k] * rhs.mat[k][j];
 			}
 		}
 	}
-	*this = temp;
+	return temp;
+}
+
+
+void matrix3x3::MatMul(const matrix3x3 & rhs)
+{
+	*this = MatMulAlg(*this, rhs);
 }
 
 
 void matrix3x3::MatAdd(const matrix3x3 & rhs)
 {
-	for (size_t i = 0; i < 3; i++)
-	{
-		for (size_t j = 0; j < 3; j++)
-		{
-			this->mat[i][j] += rhs.mat[i][j];
-		}
-	}
+	*this = MatAddAlg(*this, rhs);
+}
+
+void matrix3x3::MatSub(const matrix3x3 & rhs)
+{
+	*this = MatSubAlg(*this, rhs);
 }
 
 void matrix3x3::ScalarMul(FloatFX scalar)
@@ -140,6 +172,44 @@ matrix3x3 & matrix3x3::Inverse() const
 	
 	return res;
 }
+
+void matrix3x3::operator*=(const matrix3x3 & rhs)
+{
+	MatMul(rhs);
+}
+
+void matrix3x3::operator*=(const vector3d & rhs)
+{
+	MatMulVector(rhs);
+}
+
+
+void matrix3x3::operator+=(const matrix3x3 & rhs)
+{
+	MatAdd(rhs);
+}
+
+
+void matrix3x3::operator-=(const matrix3x3 & rhs)
+{
+	MatSub(rhs);
+}
+
+matrix3x3 matrix3x3::operator+(const matrix3x3 & rhs)
+{
+	return MatAddAlg(*this, rhs);
+}
+
+matrix3x3 matrix3x3::operator-(const matrix3x3 & rhs)
+{
+	return MatSubAlg(*this, rhs);
+}
+
+matrix3x3 matrix3x3::operator*(const matrix3x3 & rhs)
+{
+	return MatMulAlg(*this, rhs);
+}
+
 
 void M3x3_SSE(float *A, float *B, float *C) {
 	__m128 row1 = _mm_load_ps(&B[0]);

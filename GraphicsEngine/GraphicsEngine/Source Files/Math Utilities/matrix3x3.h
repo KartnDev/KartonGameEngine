@@ -11,10 +11,11 @@ struct matrix3x3
 	__m128 row[3];
 
 
-	void MatMul(matrix3x3& rhs);
-	void MatMulVector(const matrix3x3& rhs);
+	void MatMul(const matrix3x3& rhs);
+	void MatMulVector(const vector3d& rhs);
 
 	void MatAdd(const matrix3x3& rhs);
+	void MatSub(const matrix3x3& rhs);
 
 	void ScalarMul(FloatFX scalar);
 	void ScalarAdd(FloatFX scalar);
@@ -27,26 +28,13 @@ struct matrix3x3
 
 	void operator*=(const matrix3x3& rhs);
 	void operator*=(const vector3d& rhs);
-
-	void operator/=(const matrix3x3& rhs);
-	void operator/=(const vector3d& rhs);
-
 	void operator+=(const matrix3x3& rhs);
-	void operator+=(const vector3d& rhs);
-
 	void operator-=(const matrix3x3& rhs);
-	void operator-=(const vector3d& rhs);
 
 	matrix3x3 operator+(const matrix3x3& rhs);
-	matrix3x3 operator+(const vector3d& rhs);
-
 	matrix3x3 operator-(const matrix3x3& rhs);
-	matrix3x3 operator-(const vector3d& rhs);
-
 	matrix3x3 operator*(const matrix3x3& rhs);
 	matrix3x3 operator*(const vector3d& rhs);
 
-	matrix3x3 operator/(const matrix3x3& rhs);
-	matrix3x3 operator/(const vector3d& rhs);
 };
 
