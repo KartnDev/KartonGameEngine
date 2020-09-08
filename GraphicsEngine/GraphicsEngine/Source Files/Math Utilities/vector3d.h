@@ -1,4 +1,4 @@
-#include "../Common/FXTypes.h"
+#include "../Common/pchdr.h"
 
 struct vector3d
 {

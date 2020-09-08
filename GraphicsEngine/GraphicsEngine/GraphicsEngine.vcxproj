@@ -19,11 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source Files\Common\pchdr.h" />
+    <ClCompile Include="Source Files\Math Utilities\matrix4x4.cpp" />
     <ClCompile Include="Source Files\Math Utilities\matrix3x3.cpp" />
     <ClCompile Include="Source Files\main.cpp" />
     <ClCompile Include="Source Files\Math Utilities\vector3d.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source Files\Math Utilities\matrix4x4.h" />
     <ClInclude Include="Source Files\Common\FXTypes.h" />
     <ClInclude Include="Source Files\Math Utilities\matrix3x3.h" />
     <ClInclude Include="Source Files\Math Utilities\vector3d.h" />

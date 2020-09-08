@@ -4,10 +4,13 @@
     <ClCompile Include="Source Files\main.cpp" />
     <ClCompile Include="Source Files\Math Utilities\vector3d.cpp" />
     <ClCompile Include="Source Files\Math Utilities\matrix3x3.cpp" />
+    <ClCompile Include="Source Files\Math Utilities\matrix4x4.cpp" />
+    <ClCompile Include="Source Files\Common\pchdr.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source Files\Math Utilities\vector3d.h" />
     <ClInclude Include="Source Files\Math Utilities\matrix3x3.h" />
     <ClInclude Include="Source Files\Common\FXTypes.h" />
+    <ClInclude Include="Source Files\Math Utilities\matrix4x4.h" />
   </ItemGroup>
 </Project>

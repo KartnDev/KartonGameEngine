@@ -1,19 +1,6 @@
 #include "matrix3x3.h"
 
 
-#include <intrin.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-inline __m128 lincomb_SSE(const __m128 &a, const matrix3x3 &B)
-{
-	__m128 result;
-	result = _mm_mul_ps(_mm_shuffle_ps(a, a, 0x00), B.row[0]);
-	result = _mm_add_ps(result, _mm_mul_ps(_mm_shuffle_ps(a, a, 0x55), B.row[1]));
-	result = _mm_add_ps(result, _mm_mul_ps(_mm_shuffle_ps(a, a, 0xaa), B.row[2]));
-	return result;
-}
 
 
 void mmul_tiled_avx_unrolled(const int n, const float *left, const float *right, float *result) {
@@ -176,11 +163,6 @@ matrix3x3 & matrix3x3::Inverse() const
 void matrix3x3::operator*=(const matrix3x3 & rhs)
 {
 	MatMul(rhs);
-}
-
-void matrix3x3::operator*=(const vector3d & rhs)
-{
-	MatMulVector(rhs);
 }
 
 
