@@ -28,3 +28,25 @@ void matrix4x4::MatMul(const matrix4x4 & rhs)
 	*this = res;
 }
 
+void matrix4x4::MatAdd(const matrix4x4 & rhs)
+{
+
+}
+
+void matrix4x4::MatSub(const matrix4x4 & rhs)
+{
+}
+
+void matrix4x4::ScalarMul(FloatFX scalar)
+{
+}
+
+void matrix4x4::ScalarAdd(FloatFX scalar)
+{
+}
+
+inline FloatFX matrix4x4::Det() const
+{
+	return FloatFX();
+}
+
