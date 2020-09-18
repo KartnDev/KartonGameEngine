@@ -1,5 +1,8 @@
 #include "matrix4x4.h"
 
+#define MAT_COLS 4
+#define MAT_ROWS 4
+
 void m4x4_AVX(float *A, float *B, float *C) 
 {
 	__m256 row1 = _mm256_load_ps(&B[0]);
@@ -30,23 +33,136 @@ void matrix4x4::MatMul(const matrix4x4 & rhs)
 
 void matrix4x4::MatAdd(const matrix4x4 & rhs)
 {
-
+	for (size_t i = 0; i < MAT_ROWS; i++)
+	{
+		for (size_t j = 0; j < MAT_COLS; j++)
+		{
+			this->mat[i][j] += rhs.mat[i][j];
+		}
+	}
 }
 
 void matrix4x4::MatSub(const matrix4x4 & rhs)
 {
+	for (size_t i = 0; i < MAT_ROWS; i++)
+	{
+		for (size_t j = 0; j < MAT_COLS; j++)
+		{
+			this->mat[i][j] -= rhs.mat[i][j];
+		}
+	}
 }
 
 void matrix4x4::ScalarMul(FloatFX scalar)
 {
+	for (size_t i = 0; i < MAT_ROWS; i++)
+	{
+		for (size_t j = 0; j < MAT_COLS; j++)
+		{
+			this->mat[i][j] *= scalar;
+		}
+	}
 }
 
 void matrix4x4::ScalarAdd(FloatFX scalar)
 {
+	for (size_t i = 0; i < MAT_ROWS; i++)
+	{
+		for (size_t j = 0; j < MAT_COLS; j++)
+		{
+			this->mat[i][j] += scalar;
+		}
+	}
+}
+
+void matrix4x4::operator+=(FloatFX rhs)
+{
+	ScalarAdd(rhs);
+}
+
+void matrix4x4::operator*=(FloatFX rhs)
+{
+	ScalarMul(rhs);
 }
 
 inline FloatFX matrix4x4::Det() const
 {
 	return FloatFX();
+}
+
+matrix4x4 & matrix4x4::Inverse() const
+{
+	matrix4x4 res;
+
+	return res;
+}
+
+void matrix4x4::InverseSelf()
+{
+}
+
+void matrix4x4::TransposeSelf()
+{
+}
+
+matrix4x4 & matrix4x4::Transpose()
+{
+	matrix4x4 res;
+
+	return res;
+}
+
+void matrix4x4::operator*=(const matrix4x4 & rhs)
+{
+	MatMul(rhs);
+}
+
+void matrix4x4::operator+=(const matrix4x4 & rhs)
+{
+	MatAdd(rhs);
+}
+
+void matrix4x4::operator-=(const matrix4x4 & rhs)
+{
+	MatSub(rhs);
+}
+
+matrix4x4 matrix4x4::operator+(const matrix4x4 & rhs)
+{
+	matrix4x4 result;
+
+	for (size_t i = 0; i < MAT_ROWS; i++)
+	{
+		for (size_t j = 0; j < MAT_COLS; j++)
+		{
+			result.mat[i][j] = this->mat[i][j] + rhs.mat[i][j];
+		}
+	}
+
+	return result;
+}
+
+matrix4x4 matrix4x4::operator-(const matrix4x4 & rhs)
+{
+	matrix4x4 result;
+
+	for (size_t i = 0; i < MAT_ROWS; i++)
+	{
+		for (size_t j = 0; j < MAT_COLS; j++)
+		{
+			result.mat[i][j] = this->mat[i][j] - rhs.mat[i][j];
+		}
+	}
+
+	return result;
+}
+
+matrix4x4 matrix4x4::operator*(const matrix4x4 & rhs)
+{
+	matrix4x4 res;
+
+	m4x4_AVX(this->mat[0], const_cast<float*>(rhs.mat[0]), res.mat[0]);
+
+	return res;
 }
 

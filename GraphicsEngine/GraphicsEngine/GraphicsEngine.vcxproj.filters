@@ -6,6 +6,10 @@
     <ClCompile Include="Source Files\Math Utilities\matrix3x3.cpp" />
     <ClCompile Include="Source Files\Math Utilities\matrix4x4.cpp" />
     <ClCompile Include="Source Files\Common\pchdr.h" />
+    <ClCompile Include="Source Files\GraphicsFlow\Graphing2D.cpp" />
+    <ClCompile Include="Source Files\Geometry\Triangle.cpp" />
+    <ClCompile Include="Source Files\Math Utilities\vector2d.cpp" />
+    <ClCompile Include="Source Files\Geometry\Mesh.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source Files\Math Utilities\vector3d.h" />
@@ -13,5 +17,9 @@
     <ClInclude Include="Source Files\Common\FXTypes.h" />
     <ClInclude Include="Source Files\Math Utilities\matrix4x4.h" />
     <ClInclude Include="Source Files\Math Utilities\CommonMathPreHeader.h" />
+    <ClInclude Include="Source Files\GraphicsFlow\Graphing2D.h" />
+    <ClInclude Include="Source Files\Geometry\Triangle.h" />
+    <ClInclude Include="Source Files\Math Utilities\vector2d.h" />
+    <ClInclude Include="Source Files\Geometry\Mesh.h" />
   </ItemGroup>
 </Project>

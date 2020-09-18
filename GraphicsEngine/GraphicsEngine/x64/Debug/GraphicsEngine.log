@@ -1,0 +1,9 @@
+﻿main.obj : error LNK2019: ссылка на неразрешенный внешний символ glutInit в функции main
+main.obj : error LNK2019: ссылка на неразрешенный внешний символ glutInitDisplayMode в функции main
+main.obj : error LNK2019: ссылка на неразрешенный внешний символ glutInitWindowPosition в функции main
+main.obj : error LNK2019: ссылка на неразрешенный внешний символ glutInitWindowSize в функции main
+main.obj : error LNK2019: ссылка на неразрешенный внешний символ glutMainLoop в функции main
+main.obj : error LNK2019: ссылка на неразрешенный внешний символ glutCreateWindow в функции main
+main.obj : error LNK2019: ссылка на неразрешенный внешний символ glutDisplayFunc в функции main
+C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.16.27023\lib\x64\glut32.lib : warning LNK4272: тип компьютера библиотеки "x86" конфликтует с типом целевого компьютера "x64"
+C:\Users\Dmitry\Documents\GitHub\KartonGameEngine\GraphicsEngine\x64\Debug\GraphicsEngine.exe : fatal error LNK1120: неразрешенных внешних элементов: 7

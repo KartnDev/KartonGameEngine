@@ -32,6 +32,4 @@ struct matrix4x4
 	matrix4x4 operator+(const matrix4x4& rhs);
 	matrix4x4 operator-(const matrix4x4& rhs);
 	matrix4x4 operator*(const matrix4x4& rhs);
-
-
 };

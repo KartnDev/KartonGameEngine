@@ -1,2 +1,2 @@
-﻿  matrix3x3.cpp
-  GraphicsEngine.vcxproj -> C:\Users\Dmitry\Documents\GitHub\KartonGameEngine\GraphicsEngine\Debug\GraphicsEngine.exe
+﻿main.obj : error LNK2019: ссылка на неразрешенный внешний символ "void __cdecl DrawTriangle(float,float,float,float,float,float)" (?DrawTriangle@@YAXMMMMMM@Z) в функции "void __cdecl CallBackWindow(void)" (?CallBackWindow@@YAXXZ)
+C:\Users\Dmitry\Documents\GitHub\KartonGameEngine\GraphicsEngine\Debug\GraphicsEngine.exe : fatal error LNK1120: неразрешенных внешних элементов: 1
