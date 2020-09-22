@@ -29,7 +29,7 @@ void CallBackWindow(void)
 {
 	glClear(GL_COLOR_BUFFER_BIT);
 	
-	DrawTriangle(100.0f, 100.0f, 200.0f, 400.0f, 500.0f, 450.0f);
+	DrawTriangle(200.0f, 100.0f, 300.0f, 400.0f, 500.0f, 250.0f);
 
 	//drawLines(100, 100, 400, 400);
 	

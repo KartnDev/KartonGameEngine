@@ -1,0 +1,9 @@
+﻿  Mesh.obj : MSIL .netmodule or module compiled with /GL found; restarting link with /LTCG; add /LTCG to the link command line to improve linker performance
+main.obj : error LNK2001: unresolved external symbol glutInit
+main.obj : error LNK2001: unresolved external symbol glutCreateWindow
+main.obj : error LNK2001: unresolved external symbol glutInitDisplayMode
+main.obj : error LNK2001: unresolved external symbol glutDisplayFunc
+main.obj : error LNK2001: unresolved external symbol glutMainLoop
+main.obj : error LNK2001: unresolved external symbol glutInitWindowPosition
+main.obj : error LNK2001: unresolved external symbol glutInitWindowSize
+C:\Users\Dmitry\Documents\GitHub\KartonGameEngine\GraphicsEngine\x64\RUNTIME_RELEASE\GraphicsEngine.exe : fatal error LNK1120: 7 unresolved externals
