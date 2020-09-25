@@ -1,10 +1,12 @@
-#include "../Math Utilities/vector3d.h"
+#pragma once
+
+#include "../Math Utilities/Vector3d.h"
 
 struct Triangle
 {
-	vector3d points[3];
-	unsigned char red;
-	unsigned char green;
-	unsigned char blue;
+	Vector3d points[3];
+	unsigned char red = 255;
+	unsigned char green = 255;
+	unsigned char blue = 255;
 };
 

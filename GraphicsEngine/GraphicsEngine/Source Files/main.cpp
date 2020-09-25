@@ -1,6 +1,6 @@
 #include <GL/glut.h>
-#include "GraphicsFlow/Graphing2D.h"
 
+#include "GraphicsFlow/GraphicsPipeline.h"
 
 #define WIN_X 0
 #define WIN_Y 0
@@ -9,6 +9,7 @@
 #define HEIGHT 480
 
 void init(void) {
+
 	glClearColor(0, 0, 0, 0);
 
 	glViewport(WIN_X, WIN_Y, WIDTH, HEIGHT);
@@ -21,6 +22,7 @@ void init(void) {
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
+
 }
 
 
@@ -29,16 +31,15 @@ void CallBackWindow(void)
 {
 	glClear(GL_COLOR_BUFFER_BIT);
 	
-	DrawTriangle(200.0f, 100.0f, 300.0f, 400.0f, 500.0f, 250.0f);
+	FramePipelineFlow();
 
-	//drawLines(100, 100, 400, 400);
-	
 	glFlush();
 }
 
 
 
-int main(int argc, char**argv) {
+int main(int argc, char**argv) 
+{
 
 	glutInit(&argc, argv);
 	glutInitWindowPosition(10, 10);
@@ -46,7 +47,10 @@ int main(int argc, char**argv) {
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
 
 	glutCreateWindow("Example");
+
 	init();
+	InitPipelining();
+
 	glutDisplayFunc(CallBackWindow);
 	glutMainLoop();
 

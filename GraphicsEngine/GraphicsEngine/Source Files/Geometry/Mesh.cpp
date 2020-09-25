@@ -1,6 +1,12 @@
-#include "Mesh.h"
+#define _SILENCE_CXX17_STRSTREAM_DEPRECATION_WARNING
 
-bool Mesh::LoadFromObjectFile(std::string sFileName)
+#include "Mesh.h"
+#include <fstream>
+#include "../Math Utilities/vector3d.h"
+#include <strstream>
+
+
+bool Mesh::LoadFromObjectFile(const std::string& sFileName)
 {
 	std::ifstream fileStream(sFileName);
 	if (!fileStream.is_open())
@@ -8,7 +14,7 @@ bool Mesh::LoadFromObjectFile(std::string sFileName)
 		return false;
 	}
 	//Local cache of vertexes
-	std::vector<vector3d> vertexes;
+	std::vector<Vector3d> vertexes;
 
 	while (!fileStream.eof())
 	{
@@ -23,7 +29,7 @@ bool Mesh::LoadFromObjectFile(std::string sFileName)
 
 		if (line[0] == 'v')
 		{
-			vector3d v;
+			Vector3d v;
 			stringStream >> junk >> v.x >> v.y >> v.z;
 			vertexes.push_back(v);
 		}
