@@ -37,7 +37,9 @@ void CallBackWindow(void)
 }
 
 
+
 int main(int argc, char**argv) {
+
 	glutInit(&argc, argv);
 	glutInitWindowPosition(10, 10);
 	glutInitWindowSize(500, 500);
@@ -47,4 +49,5 @@ int main(int argc, char**argv) {
 	init();
 	glutDisplayFunc(CallBackWindow);
 	glutMainLoop();
+
 }

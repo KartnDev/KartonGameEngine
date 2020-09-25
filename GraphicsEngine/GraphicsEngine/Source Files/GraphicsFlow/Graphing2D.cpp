@@ -106,6 +106,19 @@ void DrawTriangle(vector2d point1, vector2d point2, vector2d point3, int red, in
 	glEnd();
 }
 
+void DrawTriangle(Triangle tri)
+{
+	glBegin(GL_LINES);
+
+	glColor3f(tri.red, tri.green, tri.blue);
+
+	GlVector2D(tri.points[1].x, tri.points[1].y);
+	GlVector2D(tri.points[2].x, tri.points[2].x);
+	GlVector2D(tri.points[3].x, tri.points[3].x);
+
+	glEnd();
+}
+
 void FillTriangle(FloatFX x0, FloatFX y0, FloatFX x1, FloatFX y1, FloatFX x2, FloatFX y2)
 {
 	FillTriangle(x0, y0, x1, y1, x2, y2, 1.0f, 1.0f, 1.0f, 1.0f);
