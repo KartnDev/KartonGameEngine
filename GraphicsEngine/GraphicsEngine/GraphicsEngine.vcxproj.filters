@@ -24,4 +24,10 @@
     <ClInclude Include="Source Files\Geometry\Mesh.h" />
     <ClInclude Include="Source Files\GraphicsFlow\GraphicsPipeline.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Object Include="Resource Files\axis.obj" />
+    <Object Include="Resource Files\mountains.obj" />
+    <Object Include="Resource Files\teapot.obj" />
+    <Object Include="Resource Files\textureMesh.obj" />
+  </ItemGroup>
 </Project>

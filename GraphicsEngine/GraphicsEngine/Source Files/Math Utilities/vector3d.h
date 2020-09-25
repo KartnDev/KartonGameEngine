@@ -1,20 +1,22 @@
+#pragma once
 #include "../Common/pchdr.h"
 
-struct vector3d
+
+struct Vector3d
 {
 	FloatFX x, y, z, w;
 
-	vector3d();
-	vector3d(FloatFX x, FloatFX y, FloatFX z, FloatFX w);
+	Vector3d();
+	Vector3d(FloatFX x, FloatFX y, FloatFX z, FloatFX w);
 
 	inline FloatFX Length() const;
 	void Normailize();
 
-	inline bool Equals(const vector3d& rhs) const;
-	inline bool operator==(const vector3d& rhs) const;
+	inline bool Equals(const Vector3d& rhs) const;
+	inline bool operator==(const Vector3d& rhs) const;
 
-	inline FloatFX Dot(const vector3d& rhs);
-	vector3d Cross(const vector3d& rhs);
+	inline FloatFX Dot(const Vector3d& rhs);
+	Vector3d Cross(const Vector3d& rhs);
 
 	void MultiplyByScalar(FloatFX scalar);
 	void operator/= (FloatFX scalar);
@@ -22,15 +24,15 @@ struct vector3d
 	void DivideByScalar(FloatFX scalar);
 	void operator*= (FloatFX scalar);
 
-	void AddScalar(const vector3d& rhs);
-	void operator+= (const vector3d& rhs);
+	void AddScalar(const Vector3d& rhs);
+	void operator+= (const Vector3d& rhs);
 
-	void SubScalar(const vector3d& rhs);
-	void operator-= (const vector3d& rhs);
+	void SubScalar(const Vector3d& rhs);
+	void operator-= (const Vector3d& rhs);
 
-	vector3d operator+(const vector3d& rhs);
-	vector3d operator-(const vector3d& rhs);
-	vector3d operator*(const FloatFX scalar);
-	vector3d operator/(const FloatFX scalar);
+	Vector3d operator+(const Vector3d& rhs);
+	Vector3d operator-(const Vector3d& rhs);
+	Vector3d operator*(const FloatFX scalar);
+	Vector3d operator/(const FloatFX scalar);
 	
 };
