@@ -10,10 +10,10 @@ Vector3d::Vector3d()
 
 Vector3d::Vector3d(FloatFX x, FloatFX y, FloatFX z, FloatFX w = 1.0f)
 {
-	x = x;
-	y = y;
-	z = z;
-	w = w;
+	this->x = x;
+	this->y = y;
+	this->z = z;
+	this->w = w;
 }
 
 inline FloatFX Vector3d::Length() const
@@ -36,12 +36,12 @@ inline bool Vector3d::operator==(const Vector3d& other) const
 	return Equals(other);
 }
 
-inline FloatFX Vector3d::Dot(const Vector3d & rhs)
+inline FloatFX Vector3d::Dot(const Vector3d & rhs) const
 {
 	return this->x * rhs.x + this->y * rhs.y + this->z * rhs.z;
 }
 
-Vector3d Vector3d::Cross(const Vector3d & rhs)
+Vector3d Vector3d::Cross(const Vector3d & rhs) const
 {
 	return Vector3d(y * rhs.z - z * rhs.y, z * rhs.x - x * rhs.z, x * rhs.y - y * rhs.x);
 }
@@ -103,22 +103,22 @@ void Vector3d::operator-=(const Vector3d & rhs)
 	z -= rhs.z;
 }
 
-Vector3d Vector3d::operator+(const Vector3d & rhs)
+Vector3d Vector3d::operator+(const Vector3d & rhs) const
 {
 	return Vector3d(x + rhs.x, y + rhs.y, z + rhs.z);
 }
 
-Vector3d Vector3d::operator-(const Vector3d & rhs)
+Vector3d Vector3d::operator-(const Vector3d & rhs) const
 {
 	return Vector3d(x - rhs.x, y - rhs.y, z - rhs.z);
 }
 
-Vector3d Vector3d::operator*(const FloatFX scalar)
+Vector3d Vector3d::operator*(const FloatFX scalar) const
 {
 	return Vector3d(x * scalar, y * scalar, z * scalar);
 }
 
-Vector3d Vector3d::operator/(const FloatFX scalar)
+Vector3d Vector3d::operator/(const FloatFX scalar) const
 {
 	return Vector3d(x / scalar, y / scalar, z / scalar);
 }

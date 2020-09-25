@@ -15,8 +15,8 @@ struct Vector3d
 	inline bool Equals(const Vector3d& rhs) const;
 	inline bool operator==(const Vector3d& rhs) const;
 
-	inline FloatFX Dot(const Vector3d& rhs);
-	Vector3d Cross(const Vector3d& rhs);
+	inline FloatFX Dot(const Vector3d& rhs) const;
+	Vector3d Cross(const Vector3d& rhs) const;
 
 	void MultiplyByScalar(FloatFX scalar);
 	void operator/= (FloatFX scalar);
@@ -30,9 +30,9 @@ struct Vector3d
 	void SubScalar(const Vector3d& rhs);
 	void operator-= (const Vector3d& rhs);
 
-	Vector3d operator+(const Vector3d& rhs);
-	Vector3d operator-(const Vector3d& rhs);
-	Vector3d operator*(const FloatFX scalar);
-	Vector3d operator/(const FloatFX scalar);
+	Vector3d operator+(const Vector3d& rhs) const;
+	Vector3d operator-(const Vector3d& rhs) const;
+	Vector3d operator*(const FloatFX scalar) const;
+	Vector3d operator/(const FloatFX scalar) const;
 	
 };

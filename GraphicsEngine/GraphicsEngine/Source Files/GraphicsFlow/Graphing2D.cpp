@@ -15,7 +15,7 @@ void DrawLine(FloatFX x0, FloatFX y0, FloatFX x1, FloatFX y1)
 	DrawLine(x0, y0, x1, y1, 1.0f, 1.0f, 1.0f, 1.0f);
 }
 
-void DrawLine(vector2d point1, vector2d point2)
+void DrawLine(Vector2d point1, Vector2d point2)
 {
 	DrawLine(point1, point2, 1.0f, 1.0f, 1.0f, 1.0f);
 }
@@ -26,7 +26,7 @@ void DrawLine(FloatFX x0, FloatFX y0, FloatFX x1, FloatFX y1, float alpha)
 }
 
 
-void DrawLine(vector2d point1, vector2d point2, float alpha)
+void DrawLine(Vector2d point1, Vector2d point2, float alpha)
 {
 	DrawLine(point1, point2, 1.0f, 1.0f, 1.0f, alpha);
 }
@@ -43,7 +43,7 @@ void DrawLine(FloatFX x0, FloatFX y0, FloatFX x1, FloatFX y1, int red, int green
 	glEnd();
 }
 
-void DrawLine(vector2d point1, vector2d point2, int red, int green, int blue, float alpha)
+void DrawLine(Vector2d point1, Vector2d point2, int red, int green, int blue, float alpha)
 {
 	glColor4f(red, green, blue, alpha);
 
@@ -60,7 +60,7 @@ void DrawTriangle(FloatFX x0, FloatFX y0, FloatFX x1, FloatFX y1, FloatFX x2, Fl
 	DrawTriangle(x0, y0, x1, y1, x2, y2, 1.0f, 1.0f, 1.0f, 1.0f);
 }
 
-void DrawTriangle(vector2d point1, vector2d point2, vector2d point3)
+void DrawTriangle(Vector2d point1, Vector2d point2, Vector2d point3)
 {
 	DrawTriangle(point1, point2, point3, 1.0f, 1.0f, 1.0f, 1.0f);
 }
@@ -70,7 +70,7 @@ void DrawTriangle(FloatFX x0, FloatFX y0, FloatFX x1, FloatFX y1, FloatFX x2, Fl
 	DrawTriangle(x0, y0, x1, y1, x2, y2, 1.0f, 1.0f, 1.0f, alpha);
 }
 
-void DrawTriangle(vector2d point1, vector2d point2, vector2d point3, float alpha)
+void DrawTriangle(Vector2d point1, Vector2d point2, Vector2d point3, float alpha)
 {
 	DrawTriangle(point1, point2, point3, 1.0f, 1.0f, 1.0f, alpha);
 }
@@ -93,7 +93,7 @@ void DrawTriangle(FloatFX x0, FloatFX y0, FloatFX x1, FloatFX y1, FloatFX x2, Fl
 	glEnd();
 }
 
-void DrawTriangle(vector2d point1, vector2d point2, vector2d point3, int red, int green, int blue, float alpha)
+void DrawTriangle(Vector2d point1, Vector2d point2, Vector2d point3, int red, int green, int blue, float alpha)
 {
 	glBegin(GL_LINES);
 
@@ -124,7 +124,7 @@ void FillTriangle(FloatFX x0, FloatFX y0, FloatFX x1, FloatFX y1, FloatFX x2, Fl
 	FillTriangle(x0, y0, x1, y1, x2, y2, 1.0f, 1.0f, 1.0f, 1.0f);
 }
 
-void FillTriangle(vector2d point1, vector2d point2, vector2d point3)
+void FillTriangle(Vector2d point1, Vector2d point2, Vector2d point3)
 {
 	FillTriangle(point1, point2, point3, 1.0f, 1.0f, 1.0f, 1.0f);
 }
@@ -134,7 +134,7 @@ void FillTriangle(FloatFX x0, FloatFX y0, FloatFX x1, FloatFX y1, FloatFX x2, Fl
 	FillTriangle(x0, y0, x1, y1, x2, y2, 1.0f, 1.0f, 1.0f, alpha);
 }
 
-void FillTriangle(vector2d point1, vector2d point2, vector2d point3, float alpha)
+void FillTriangle(Vector2d point1, Vector2d point2, Vector2d point3, float alpha)
 {
 	FillTriangle(point1, point2, point3, 1.0f, 1.0f, 1.0f, alpha);
 }
@@ -152,7 +152,7 @@ void FillTriangle(FloatFX x0, FloatFX y0, FloatFX x1, FloatFX y1, FloatFX x2, Fl
 	glEnd();
 }
 
-void FillTriangle(vector2d point1, vector2d point2, vector2d point3, int red, int green, int blue, float alpha)
+void FillTriangle(Vector2d point1, Vector2d point2, Vector2d point3, int red, int green, int blue, float alpha)
 {
 	glBegin(GL_TRIANGLES);
 

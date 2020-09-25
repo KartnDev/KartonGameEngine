@@ -1,2 +1,2 @@
 ﻿  GraphicsPipeline.cpp
-Resource Files\axis.obj : fatal error LNK1107: invalid or corrupt file: cannot read at 0xF85
+  GraphicsEngine.vcxproj -> C:\Users\Dmitry\Documents\GitHub\KartonGameEngine\GraphicsEngine\Debug\GraphicsEngine.exe

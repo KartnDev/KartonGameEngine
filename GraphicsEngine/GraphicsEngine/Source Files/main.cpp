@@ -5,8 +5,6 @@
 #define WIN_X 0
 #define WIN_Y 0
 
-#define WIDTH 640
-#define HEIGHT 480
 
 void init(void) {
 
