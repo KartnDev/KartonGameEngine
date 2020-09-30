@@ -28,7 +28,7 @@ Triangle Ortho2DTris(Triangle triangle, int zFar, int zNear, float thetaFoV)
 	v1 = Ortho2D(triangle.points[1], zFar, zNear, thetaFoV);
 	res.points[1].x = v1.x;
 	res.points[1].y = v1.y;
-
+	
 	v1 = Ortho2D(triangle.points[2], zFar, zNear, thetaFoV);
 	res.points[2].x = v1.x;
 	res.points[2].y = v1.y;
