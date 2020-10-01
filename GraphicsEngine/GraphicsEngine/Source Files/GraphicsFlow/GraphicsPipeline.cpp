@@ -20,59 +20,59 @@ namespace KtStd::Graphics
 		triSouth1.points[2] = Vector3d(1.0f, 1.0f, 0.0f, 1.0f);
 
 		Triangle triSouth2;
-		triSouth1.points[0] = Vector3d(0.0f, 0.0f, 0.0f, 1.0f);
-		triSouth1.points[1] = Vector3d(1.0f, 1.0f, 0.0f, 1.0f);
-		triSouth1.points[2] = Vector3d(1.0f, 0.0f, 0.0f, 1.0f);
+		triSouth2.points[0] = Vector3d(0.0f, 0.0f, 0.0f, 1.0f);
+		triSouth2.points[1] = Vector3d(1.0f, 1.0f, 0.0f, 1.0f);
+		triSouth2.points[2] = Vector3d(1.0f, 0.0f, 0.0f, 1.0f);
 
 		Triangle triEast1;
-		triSouth1.points[0] = Vector3d(1.0f, 0.0f, 0.0f, 1.0f);
-		triSouth1.points[1] = Vector3d(1.0f, 1.0f, 0.0f, 1.0f);
-		triSouth1.points[2] = Vector3d(1.0f, 1.0f, 1.0f, 1.0f);
+		triEast1.points[0] = Vector3d(1.0f, 0.0f, 0.0f, 1.0f);
+		triEast1.points[1] = Vector3d(1.0f, 1.0f, 0.0f, 1.0f);
+		triEast1.points[2] = Vector3d(1.0f, 1.0f, 1.0f, 1.0f);
 
 		Triangle triEast2;
-		triSouth1.points[0] = Vector3d(1.0f, 0.0f, 0.0f, 1.0f);
-		triSouth1.points[1] = Vector3d(1.0f, 1.0f, 1.0f, 1.0f);
-		triSouth1.points[2] = Vector3d(1.0f, 0.0f, 1.0f, 1.0f);
+		triEast2.points[0] = Vector3d(1.0f, 0.0f, 0.0f, 1.0f);
+		triEast2.points[1] = Vector3d(1.0f, 1.0f, 1.0f, 1.0f);
+		triEast2.points[2] = Vector3d(1.0f, 0.0f, 1.0f, 1.0f);
 
 		Triangle triNorth1;
-		triSouth1.points[0] = Vector3d(1.0f, 0.0f, 1.0f, 1.0f);
-		triSouth1.points[1] = Vector3d(1.0f, 1.0f, 1.0f, 1.0f);
-		triSouth1.points[2] = Vector3d(0.0f, 1.0f, 1.0f, 1.0f);
+		triNorth1.points[0] = Vector3d(1.0f, 0.0f, 1.0f, 1.0f);
+		triNorth1.points[1] = Vector3d(1.0f, 1.0f, 1.0f, 1.0f);
+		triNorth1.points[2] = Vector3d(0.0f, 1.0f, 1.0f, 1.0f);
 
 		Triangle triNorth2;
-		triSouth1.points[0] = Vector3d(1.0f, 0.0f, 1.0f, 1.0f);
-		triSouth1.points[1] = Vector3d(0.0f, 1.0f, 1.0f, 1.0f);
-		triSouth1.points[2] = Vector3d(0.0f, 0.0f, 1.0f, 1.0f);
+		triNorth2.points[0] = Vector3d(1.0f, 0.0f, 1.0f, 1.0f);
+		triNorth2.points[1] = Vector3d(0.0f, 1.0f, 1.0f, 1.0f);
+		triNorth2.points[2] = Vector3d(0.0f, 0.0f, 1.0f, 1.0f);
 
 		Triangle triWest1;
-		triSouth1.points[0] = Vector3d(0.0f, 0.0f, 1.0f, 1.0f);
-		triSouth1.points[1] = Vector3d(0.0f, 1.0f, 1.0f, 1.0f);
-		triSouth1.points[2] = Vector3d(0.0f, 1.0f, 0.0f, 1.0f);
+		triWest1.points[0] = Vector3d(0.0f, 0.0f, 1.0f, 1.0f);
+		triWest1.points[1] = Vector3d(0.0f, 1.0f, 1.0f, 1.0f);
+		triWest1.points[2] = Vector3d(0.0f, 1.0f, 0.0f, 1.0f);
 
 		Triangle triWest2;
-		triSouth1.points[0] = Vector3d(0.0f, 0.0f, 1.0f, 1.0f);
-		triSouth1.points[1] = Vector3d(0.0f, 1.0f, 0.0f, 1.0f);
-		triSouth1.points[2] = Vector3d(0.0f, 0.0f, 0.0f, 1.0f);
+		triWest2.points[0] = Vector3d(0.0f, 0.0f, 1.0f, 1.0f);
+		triWest2.points[1] = Vector3d(0.0f, 1.0f, 0.0f, 1.0f);
+		triWest2.points[2] = Vector3d(0.0f, 0.0f, 0.0f, 1.0f);
 
 		Triangle triTop1;
-		triSouth1.points[0] = Vector3d(0.0f, 1.0f, 0.0f, 1.0f);
-		triSouth1.points[1] = Vector3d(0.0f, 1.0f, 1.0f, 1.0f);
-		triSouth1.points[2] = Vector3d(1.0f, 1.0f, 1.0f, 1.0f);
+		triTop1.points[0] = Vector3d(0.0f, 1.0f, 0.0f, 1.0f);
+		triTop1.points[1] = Vector3d(0.0f, 1.0f, 1.0f, 1.0f);
+		triTop1.points[2] = Vector3d(1.0f, 1.0f, 1.0f, 1.0f);
 
 		Triangle triTop2;
-		triSouth1.points[0] = Vector3d(0.0f, 1.0f, 0.0f, 1.0f);
-		triSouth1.points[1] = Vector3d(1.0f, 1.0f, 1.0f, 1.0f);
-		triSouth1.points[2] = Vector3d(1.0f, 1.0f, 0.0f, 1.0f);
+		triTop2.points[0] = Vector3d(0.0f, 1.0f, 0.0f, 1.0f);
+		triTop2.points[1] = Vector3d(1.0f, 1.0f, 1.0f, 1.0f);
+		triTop2.points[2] = Vector3d(1.0f, 1.0f, 0.0f, 1.0f);
 
 		Triangle triBottom1;
-		triSouth1.points[0] = Vector3d(1.0f, 0.0f, 1.0f, 1.0f);
-		triSouth1.points[1] = Vector3d(0.0f, 0.0f, 1.0f, 1.0f);
-		triSouth1.points[2] = Vector3d(0.0f, 0.0f, 0.0f, 1.0f);
+		triBottom1.points[0] = Vector3d(1.0f, 0.0f, 1.0f, 1.0f);
+		triBottom1.points[1] = Vector3d(0.0f, 0.0f, 1.0f, 1.0f);
+		triBottom1.points[2] = Vector3d(0.0f, 0.0f, 0.0f, 1.0f);
 
 		Triangle triBottom2;
-		triSouth1.points[0] = Vector3d(1.0f, 0.0f, 1.0f, 1.0f);
-		triSouth1.points[1] = Vector3d(0.0f, 0.0f, 0.0f, 1.0f);
-		triSouth1.points[2] = Vector3d(1.0f, 0.0f, 0.0f, 1.0f);
+		triBottom2.points[0] = Vector3d(1.0f, 0.0f, 1.0f, 1.0f);
+		triBottom2.points[1] = Vector3d(0.0f, 0.0f, 0.0f, 1.0f);
+		triBottom2.points[2] = Vector3d(1.0f, 0.0f, 0.0f, 1.0f);
 
 		mesh.tris.push_back(triSouth1);
 		mesh.tris.push_back(triSouth2);

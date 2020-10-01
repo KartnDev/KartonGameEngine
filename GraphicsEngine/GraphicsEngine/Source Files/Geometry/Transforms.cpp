@@ -3,7 +3,7 @@
 
 namespace KtStd::Geometry
 {
-	constexpr float aCoef = WIDTH / HEIGHT;
+	constexpr float aCoef = (float)WIDTH / HEIGHT;
 
 	Vector3d& MultiplyMatrixVector(const Vector3d& i, const Matrix4X4& m)
 	{
@@ -24,7 +24,7 @@ namespace KtStd::Geometry
 
 	Vector2d Ortho2D(Vector3d vec, float zFar, float zNear, float thetaFoV)
 	{
-		float fVal = 1.0f / tanf(1.57079632f);
+		float fVal = 1.0f / tanf(1.5f);
 		float qCoef = zFar / (zFar - zNear);
 
 		float zPointed = vec.z * qCoef - zNear * qCoef;
@@ -36,22 +36,25 @@ namespace KtStd::Geometry
 		return res;
 	}
 
-	Triangle Ortho2DTris(Triangle triangle, float zFar, float zNear, float thetaFoV)
+	Triangle Ortho2DTris(Triangle triangle, float fFar, float fNear, float thetaFoV)
 	{
 		Triangle res;
 
+		float fFovRad = 1.0f / tanf(1.5f);
 
-		auto point1 = Ortho2D(triangle.points[0], zFar, zNear, thetaFoV);
-		res.points[0].x = point1.x;
-		res.points[0].y = point1.y;
+		Matrix4X4 matProj;
 
-		auto point2 = Ortho2D(triangle.points[1], zFar, zNear, thetaFoV);
-		res.points[1].x = point2.x;
-		res.points[1].y = point2.y;
+		matProj.mat[0][0] = aCoef * fFovRad;
+		matProj.mat[1][1] = fFovRad;
+		matProj.mat[2][2] = fFar / (fFar - fNear);
+		matProj.mat[3][2] = (-fFar * fNear) / (fFar - fNear);
+		matProj.mat[2][3] = 1.0f;
+		matProj.mat[3][3] = 0.0f;
 
-		auto point3 = Ortho2D(triangle.points[2], zFar, zNear, thetaFoV);
-		res.points[2].x = point3.x;
-		res.points[2].y = point3.y;
+		res.points[0] = MultiplyMatrixVector(triangle.points[0], matProj);
+		res.points[1] = MultiplyMatrixVector(triangle.points[1], matProj);
+		res.points[2] = MultiplyMatrixVector(triangle.points[2], matProj);
+
 
 		return res;
 	}
