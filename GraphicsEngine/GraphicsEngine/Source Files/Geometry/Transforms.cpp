@@ -3,10 +3,10 @@
 
 constexpr float aCoef = WIDTH / HEIGHT;
 
-Vector2d Ortho2D(Vector3d vec, int zFar, int zNear, float thetaFoV)
+Vector2d Ortho2D(Vector3d vec, float zFar, float zNear, float thetaFoV)
 {
-	float fVal = 1.0f / tanf(thetaFoV / 2);
-	float qCoef = static_cast<float>(zFar) / (zFar - zNear);
+	float fVal = 1.0f / tanf(thetaFoV * 0.5f / 180.0f * 3.14159f);
+	float qCoef = zFar / (zFar - zNear);
 
 	float zPointed = vec.z * qCoef - zNear * qCoef;
 
@@ -17,7 +17,7 @@ Vector2d Ortho2D(Vector3d vec, int zFar, int zNear, float thetaFoV)
 	return res;
 }
 
-Triangle Ortho2DTris(Triangle triangle, int zFar, int zNear, float thetaFoV)
+Triangle Ortho2DTris(Triangle triangle, float zFar, float zNear, float thetaFoV)
 {
 	Triangle res;
 
