@@ -24,7 +24,7 @@ void DrawTriangle(Vector2d point1, Vector2d point2, Vector2d point3, float alpha
 void DrawTriangle(FloatFX x0, FloatFX y0, FloatFX x1, FloatFX y1, FloatFX x2, FloatFX y2, int red, int green, int blue, float alpha);
 void DrawTriangle(Vector2d point1, Vector2d point2, Vector2d point3, int red, int green, int blue, float alpha);
 
-void DrawTriangle(Triangle triangle);
+void DrawTriangle(const Triangle& triangle);
 
 void FillTriangle(FloatFX x0, FloatFX y0, FloatFX x1, FloatFX y1, FloatFX x2, FloatFX y2);
 void FillTriangle(Vector2d point1, Vector2d point2, Vector2d point3);

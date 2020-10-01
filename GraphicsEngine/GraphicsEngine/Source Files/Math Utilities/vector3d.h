@@ -20,7 +20,7 @@ namespace KtStd
 
 		inline FloatFX Dot(const Vector3d& rhs) const;
 
-		void MultiplyMatrixVector(const Matrix4X4& m);
+		
 
 		Vector3d Cross(const Vector3d& rhs) const;
 

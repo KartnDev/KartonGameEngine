@@ -93,17 +93,25 @@ void FramePipelineFlow()
 	{
 		for (auto element : mesh.tris)
 		{
-			const auto elementNew = Ortho2DTris(element, 0.1f, 1000, 90);
-
-			element.points[0] *= 2.0f;
-			element.points[1] *= 2.0f;
-			element.points[2] *= 2.0f;
-
 			Vector3d v{ 3.0f, 3.0f, 3.0f, 1.0f };
-
 			element.points[0] += v;
 			element.points[1] += v;
 			element.points[2] += v;
+
+			auto elementNew = Ortho2DTris(element, 0.1f, 1000, 90);
+
+			// Scale into view
+			elementNew.points[0].x += 1.0f; elementNew.points[0].y += 1.0f;
+			elementNew.points[1].x += 1.0f; elementNew.points[1].y += 1.0f;
+			elementNew.points[2].x += 1.0f; elementNew.points[2].y += 1.0f;
+			elementNew.points[0].x *= 0.5f * WIDTH;
+			elementNew.points[0].y *= 0.5f * HEIGHT;
+			elementNew.points[1].x *= 0.5f * WIDTH;
+			elementNew.points[1].y *= 0.5f * HEIGHT;
+			elementNew.points[2].x *= 0.5f * WIDTH;
+			elementNew.points[2].y *= 0.5f * HEIGHT;
+
+			
 
 
 			

@@ -43,20 +43,6 @@ namespace KtStd
 		return this->x * rhs.x + this->y * rhs.y + this->z * rhs.z;
 	}
 
-	void Vector3d::MultiplyMatrixVector(const Matrix4X4& m)
-	{
-
-		this->x = this->x * m.mat[0][0] + this->y * m.mat[1][0] + this->z * m.mat[2][0] + m.mat[3][0];
-		this->y = this->x * m.mat[0][1] + this->y * m.mat[1][1] + this->z * m.mat[2][1] + m.mat[3][1];
-		this->z = this->x * m.mat[0][2] + this->y * m.mat[1][2] + this->z * m.mat[2][2] + m.mat[3][2];
-		const float w = this->x * m.mat[0][3] + this->y * m.mat[1][3] + this->z * m.mat[2][3] + m.mat[3][3];
-
-		if (w != 0.0f)
-		{
-			this->x /= w; this->y /= w; this->z /= w;
-		}
-
-	}
 
 	Vector3d Vector3d::Cross(const Vector3d& rhs) const
 	{

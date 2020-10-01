@@ -108,7 +108,7 @@ void DrawTriangle(Vector2d point1, Vector2d point2, Vector2d point3, int red, in
 	glEnd();
 }
 
-void DrawTriangle(Triangle tri)
+void DrawTriangle(const Triangle& tri)
 {
 	glBegin(GL_LINES);
 
