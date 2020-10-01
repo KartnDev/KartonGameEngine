@@ -2,10 +2,11 @@
 
 #include "../Common/FXTypes.h"
 
-
-struct Vector2d
+namespace KtStd
 {
-	FloatFX x;
-	FloatFX y;
-};
-
+	struct Vector2d
+	{
+		FloatFX x;
+		FloatFX y;
+	};
+}
