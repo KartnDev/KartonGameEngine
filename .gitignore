@@ -1,2 +1,7 @@
 
 *.obj
+GraphicsEngine/GraphicsEngine/Debug/vc141.pdb
+GraphicsEngine/GraphicsEngine/Debug/vc141.idb
+GraphicsEngine/Debug/GraphicsEngine.pdb
+GraphicsEngine/Debug/GraphicsEngine.ilk
+GraphicsEngine/.vs/GraphicsEngine/v16/ipch/AutoPCH/d17c19888611f1ae/GRAPHING2D.ipch
