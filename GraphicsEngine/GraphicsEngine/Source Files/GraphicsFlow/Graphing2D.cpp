@@ -2,6 +2,8 @@
 
 #include "../Common/FXTypes.h"
 
+using namespace KtStd;
+
 #ifdef USING_FAST_FLOAT
 	#define GlVector2D glVertex2f
 #endif
