@@ -1,6 +1,5 @@
 #pragma once
 #include "../Common/pchdr.h"
-#include "matrix3x3.h"
 #include "matrix4x4.h"
 
 namespace KtStd
@@ -21,8 +20,7 @@ namespace KtStd
 
 		inline FloatFX Dot(const Vector3d& rhs) const;
 
-		inline void MultiplyMatrixVector(matrix4x4& m);
-
+		void MultiplyMatrixVector(const Matrix4X4& m);
 
 		Vector3d Cross(const Vector3d& rhs) const;
 

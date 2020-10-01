@@ -2,6 +2,8 @@
 
 #include "../Math Utilities/Vector3d.h"
 
+using namespace KtStd;
+
 struct Triangle
 {
 	Vector3d points[3];

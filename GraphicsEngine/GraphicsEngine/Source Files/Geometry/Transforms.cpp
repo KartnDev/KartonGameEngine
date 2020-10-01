@@ -1,6 +1,6 @@
 ﻿#include "Transforms.h"
 #include "../Common/pchdr.h"
-#include "../Math Utilities/matrix4x4.h"
+#include "../Math Utilities/Matrix4X4.h"
 
 constexpr float aCoef = WIDTH / HEIGHT;
 
@@ -24,7 +24,7 @@ Triangle Ortho2DTris(Triangle triangle, float zFar, float zNear, float thetaFoV)
 
 	Triangle res;
 
-	matrix4x4 projMat;
+	Matrix4X4 projMat;
 
 	projMat.mat[0][0] = aCoef * fFovRadian;
 	projMat.mat[1][1] = fFovRadian;
@@ -33,7 +33,7 @@ Triangle Ortho2DTris(Triangle triangle, float zFar, float zNear, float thetaFoV)
 	projMat.mat[2][3] = 1.0f;
 	projMat.mat[3][3] = 0.0f;
 
-	triangle.points[0]
+	triangle.points[0];
 
 
 	return res;

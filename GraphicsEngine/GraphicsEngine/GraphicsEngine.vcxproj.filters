@@ -3,7 +3,6 @@
   <ItemGroup>
     <ClCompile Include="Source Files\main.cpp" />
     <ClCompile Include="Source Files\Math Utilities\vector3d.cpp" />
-    <ClCompile Include="Source Files\Math Utilities\matrix3x3.cpp" />
     <ClCompile Include="Source Files\Math Utilities\matrix4x4.cpp" />
     <ClCompile Include="Source Files\Common\pchdr.h" />
     <ClCompile Include="Source Files\GraphicsFlow\Graphing2D.cpp" />
@@ -12,10 +11,10 @@
     <ClCompile Include="Source Files\Geometry\Mesh.cpp" />
     <ClCompile Include="Source Files\GraphicsFlow\GraphicsPipeline.cpp" />
     <ClCompile Include="Source Files\Geometry\Transforms.cpp" />
+    <ClCompile Include="Source Files\Math Utilities\matrix3x3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source Files\Math Utilities\vector3d.h" />
-    <ClInclude Include="Source Files\Math Utilities\matrix3x3.h" />
     <ClInclude Include="Source Files\Common\FXTypes.h" />
     <ClInclude Include="Source Files\Math Utilities\matrix4x4.h" />
     <ClInclude Include="Source Files\Math Utilities\CommonMathPreHeader.h" />
@@ -25,5 +24,6 @@
     <ClInclude Include="Source Files\Geometry\Mesh.h" />
     <ClInclude Include="Source Files\GraphicsFlow\GraphicsPipeline.h" />
     <ClInclude Include="Source Files\Geometry\Transforms.h" />
+    <ClInclude Include="Source Files\Math Utilities\matrix3x3.h" />
   </ItemGroup>
 </Project>

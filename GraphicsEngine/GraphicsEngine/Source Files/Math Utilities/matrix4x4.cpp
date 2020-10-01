@@ -1,4 +1,4 @@
-#include "matrix4x4.h"
+#include "Matrix4X4.h"
 
 #define MAT_COLS 4
 #define MAT_ROWS 4
@@ -24,16 +24,16 @@ namespace KtStd
 		}
 	}
 
-	void matrix4x4::MatMul(const matrix4x4& rhs)
+	void Matrix4X4::MatMul(const Matrix4X4& rhs)
 	{
-		matrix4x4 res;
+		Matrix4X4 res;
 
 		m4x4_AVX(this->mat[0], const_cast<float*>(rhs.mat[0]), res.mat[0]);
 
 		*this = res;
 	}
 
-	void matrix4x4::MatAdd(const matrix4x4& rhs)
+	void Matrix4X4::MatAdd(const Matrix4X4& rhs)
 	{
 		for (size_t i = 0; i < MAT_ROWS; i++)
 		{
@@ -44,7 +44,7 @@ namespace KtStd
 		}
 	}
 
-	void matrix4x4::MatSub(const matrix4x4& rhs)
+	void Matrix4X4::MatSub(const Matrix4X4& rhs)
 	{
 		for (size_t i = 0; i < MAT_ROWS; i++)
 		{
@@ -55,7 +55,7 @@ namespace KtStd
 		}
 	}
 
-	void matrix4x4::ScalarMul(FloatFX scalar)
+	void Matrix4X4::ScalarMul(FloatFX scalar)
 	{
 		for (size_t i = 0; i < MAT_ROWS; i++)
 		{
@@ -66,7 +66,7 @@ namespace KtStd
 		}
 	}
 
-	void matrix4x4::ScalarAdd(FloatFX scalar)
+	void Matrix4X4::ScalarAdd(FloatFX scalar)
 	{
 		for (size_t i = 0; i < MAT_ROWS; i++)
 		{
@@ -77,61 +77,61 @@ namespace KtStd
 		}
 	}
 
-	void matrix4x4::operator+=(FloatFX rhs)
+	void Matrix4X4::operator+=(FloatFX rhs)
 	{
 		ScalarAdd(rhs);
 	}
 
-	void matrix4x4::operator*=(FloatFX rhs)
+	void Matrix4X4::operator*=(FloatFX rhs)
 	{
 		ScalarMul(rhs);
 	}
 
-	inline FloatFX matrix4x4::Det() const
+	inline FloatFX Matrix4X4::Det() const
 	{
 		return FloatFX();
 	}
 
-	matrix4x4& matrix4x4::Inverse() const
+	Matrix4X4& Matrix4X4::Inverse() const
 	{
-		matrix4x4 res;
+		Matrix4X4 res;
 
 		return res;
 	}
 
-	void matrix4x4::InverseSelf()
+	void Matrix4X4::InverseSelf()
 	{
 	}
 
-	void matrix4x4::TransposeSelf()
+	void Matrix4X4::TransposeSelf()
 	{
 	}
 
-	matrix4x4& matrix4x4::Transpose()
+	Matrix4X4& Matrix4X4::Transpose()
 	{
-		matrix4x4 res;
+		Matrix4X4 res;
 
 		return res;
 	}
 
-	void matrix4x4::operator*=(const matrix4x4& rhs)
+	void Matrix4X4::operator*=(const Matrix4X4& rhs)
 	{
 		MatMul(rhs);
 	}
 
-	void matrix4x4::operator+=(const matrix4x4& rhs)
+	void Matrix4X4::operator+=(const Matrix4X4& rhs)
 	{
 		MatAdd(rhs);
 	}
 
-	void matrix4x4::operator-=(const matrix4x4& rhs)
+	void Matrix4X4::operator-=(const Matrix4X4& rhs)
 	{
 		MatSub(rhs);
 	}
 
-	matrix4x4 matrix4x4::operator+(const matrix4x4& rhs)
+	Matrix4X4 Matrix4X4::operator+(const Matrix4X4& rhs)
 	{
-		matrix4x4 result;
+		Matrix4X4 result;
 
 		for (size_t i = 0; i < MAT_ROWS; i++)
 		{
@@ -144,9 +144,9 @@ namespace KtStd
 		return result;
 	}
 
-	matrix4x4 matrix4x4::operator-(const matrix4x4& rhs)
+	Matrix4X4 Matrix4X4::operator-(const Matrix4X4& rhs)
 	{
-		matrix4x4 result;
+		Matrix4X4 result;
 
 		for (size_t i = 0; i < MAT_ROWS; i++)
 		{
@@ -159,9 +159,9 @@ namespace KtStd
 		return result;
 	}
 
-	matrix4x4 matrix4x4::operator*(const matrix4x4& rhs)
+	Matrix4X4 Matrix4X4::operator*(const Matrix4X4& rhs)
 	{
-		matrix4x4 res;
+		Matrix4X4 res;
 
 		m4x4_AVX(this->mat[0], const_cast<float*>(rhs.mat[0]), res.mat[0]);
 

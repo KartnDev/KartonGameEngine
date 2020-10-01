@@ -43,7 +43,7 @@ namespace KtStd
 		return this->x * rhs.x + this->y * rhs.y + this->z * rhs.z;
 	}
 
-	void Vector3d::MultiplyMatrixVector(matrix4x4& m)
+	void Vector3d::MultiplyMatrixVector(const Matrix4X4& m)
 	{
 
 		this->x = this->x * m.mat[0][0] + this->y * m.mat[1][0] + this->z * m.mat[2][0] + m.mat[3][0];
