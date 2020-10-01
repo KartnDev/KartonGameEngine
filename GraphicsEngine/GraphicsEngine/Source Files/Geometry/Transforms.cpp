@@ -83,7 +83,7 @@ namespace KtStd::Geometry
 		matRotY.mat[0][0] = cosf(theta);
 		matRotY.mat[0][2] = sinf(theta);
 		matRotY.mat[1][1] = 1;
-		matRotY.mat[2][1] = -sinf(theta);
+		matRotY.mat[2][0] = -sinf(theta);
 		matRotY.mat[2][2] = cosf(theta);
 		matRotY.mat[3][3] = 1;
 
