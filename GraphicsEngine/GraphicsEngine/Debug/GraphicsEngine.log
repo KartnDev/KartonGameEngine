@@ -1,3 +1,2 @@
-﻿  Transforms.cpp
-c:\users\dmitry\documents\github\kartongameengine\graphicsengine\graphicsengine\source files\geometry\transforms.cpp(22): warning C4172: returning address of local variable or temporary: res
+﻿  GraphicsPipeline.cpp
   GraphicsEngine.vcxproj -> C:\Users\Dmitry\Documents\GitHub\KartonGameEngine\GraphicsEngine\Debug\GraphicsEngine.exe

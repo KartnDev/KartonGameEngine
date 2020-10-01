@@ -95,24 +95,23 @@ namespace KtStd::Graphics
 		{
 			for (auto element : mesh.tris)
 			{
-				Vector3d v{ 30.0f, 30.0f, 30.0f, 1.0f };
+				Vector3d v{ 50.0f, 50.0f, 50.0f, 1.0f };
 				auto elementNew = Ortho2DTris(element, 0.1f, 1000, 90);
 
-				element.points[0] *= 10;
-				element.points[1] *= 10;
-				element.points[2] *= 10;
+				elementNew.points[0] *= 100;
+				elementNew.points[1] *= 100;
+				elementNew.points[2] *= 100;
 
-				element.points[0] += v;
-				element.points[1] += v;
-				element.points[2] += v;
+				elementNew.points[0] += v;
+				elementNew.points[1] += v;
+				elementNew.points[2] += v;
 
-			
-
-
-				FillTriangle(elementNew);
-				printf("new renderer\n");
-
-				
+				for (size_t i = 0; i < 3; i++)
+				{
+					std::cout << "X" << i << ": " << elementNew.points[i].x << " " << i << "Y: " << elementNew.points[i].y << std::endl;
+				}
+				std::cout << std::endl;
+				DrawTriangle(elementNew);
 				
 			}
 		}

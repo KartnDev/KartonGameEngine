@@ -40,21 +40,17 @@ namespace KtStd::Geometry
 	{
 		Triangle res;
 
-		float fFovRad = 1.0f / tanf(1.5f);
+		auto p0 = Ortho2D(triangle.points[0], fFar, fNear, thetaFoV);
+		res.points[0].x = p0.x;
+		res.points[0].y = p0.y;
 
-		Matrix4X4 matProj;
+		auto p1 = Ortho2D(triangle.points[1], fFar, fNear, thetaFoV);
+		res.points[1].x = p1.x;
+		res.points[1].y = p1.y;
 
-		matProj.mat[0][0] = aCoef * fFovRad;
-		matProj.mat[1][1] = fFovRad;
-		matProj.mat[2][2] = fFar / (fFar - fNear);
-		matProj.mat[3][2] = (-fFar * fNear) / (fFar - fNear);
-		matProj.mat[2][3] = 1.0f;
-		matProj.mat[3][3] = 0.0f;
-
-		res.points[0] = MultiplyMatrixVector(triangle.points[0], matProj);
-		res.points[1] = MultiplyMatrixVector(triangle.points[1], matProj);
-		res.points[2] = MultiplyMatrixVector(triangle.points[2], matProj);
-
+		auto p2 = Ortho2D(triangle.points[2], fFar, fNear, thetaFoV);
+		res.points[2].x = p2.x;
+		res.points[2].y = p2.y;
 
 		return res;
 	}
