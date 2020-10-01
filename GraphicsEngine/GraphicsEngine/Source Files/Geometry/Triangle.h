@@ -1,14 +1,15 @@
 #pragma once
+#include "../Math Utilities/vector3d.h"
 
-#include "../Math Utilities/Vector3d.h"
+using namespace KtStd::Math;
 
-using namespace KtStd;
-
-struct Triangle
+namespace KtStd::Geometry
 {
-	Vector3d points[3];
-	unsigned char red = 255;
-	unsigned char green = 255;
-	unsigned char blue = 255;
-};
-
+	struct Triangle
+	{
+		Vector3d points[3];
+		unsigned char red = 255;
+		unsigned char green = 255;
+		unsigned char blue = 255;
+	};
+}

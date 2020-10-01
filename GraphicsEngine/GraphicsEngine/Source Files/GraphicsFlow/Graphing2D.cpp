@@ -1,172 +1,181 @@
 #include "Graphing2D.h"
 
 #include "../Common/FXTypes.h"
+#include <iostream>
 
-using namespace KtStd;
-
-#ifdef USING_FAST_FLOAT
-	#define GlVector2D glVertex2f
-#endif
-
-#ifndef USING_FAST_FLOAT
-	#define GlVector2D glVertex2d
-#endif
-
-void DrawLine(FloatFX x0, FloatFX y0, FloatFX x1, FloatFX y1)
+namespace KtStd::Graphics
 {
-	DrawLine(x0, y0, x1, y1, 1.0f, 1.0f, 1.0f, 1.0f);
-}
-
-void DrawLine(Vector2d point1, Vector2d point2)
-{
-	DrawLine(point1, point2, 1.0f, 1.0f, 1.0f, 1.0f);
-}
-
-void DrawLine(FloatFX x0, FloatFX y0, FloatFX x1, FloatFX y1, float alpha)
-{
-	DrawLine(x0, y0, x1, y1, 1.0f, 1.0f, 1.0f, alpha);
-}
 
 
-void DrawLine(Vector2d point1, Vector2d point2, float alpha)
-{
-	DrawLine(point1, point2, 1.0f, 1.0f, 1.0f, alpha);
-}
+	void DrawLine(FloatFX x0, FloatFX y0, FloatFX x1, FloatFX y1)
+	{
+		DrawLine(x0, y0, x1, y1, 1.0f, 1.0f, 1.0f, 1.0f);
+	}
 
-void DrawLine(FloatFX x0, FloatFX y0, FloatFX x1, FloatFX y1, int red, int green, int blue, float alpha)
-{
-	glColor4f(red, green, blue, alpha);
+	void DrawLine(Vector2d point1, Vector2d point2)
+	{
+		DrawLine(point1, point2, 1.0f, 1.0f, 1.0f, 1.0f);
+	}
 
-	glBegin(GL_LINES);
+	void DrawLine(FloatFX x0, FloatFX y0, FloatFX x1, FloatFX y1, float alpha)
+	{
+		DrawLine(x0, y0, x1, y1, 1.0f, 1.0f, 1.0f, alpha);
+	}
 
-	GlVector2D(x0, y0);
-	GlVector2D(x1, y1);
 
-	glEnd();
-}
+	void DrawLine(Vector2d point1, Vector2d point2, float alpha)
+	{
+		DrawLine(point1, point2, 1.0f, 1.0f, 1.0f, alpha);
+	}
 
-void DrawLine(Vector2d point1, Vector2d point2, int red, int green, int blue, float alpha)
-{
-	glColor4f(red, green, blue, alpha);
+	void DrawLine(FloatFX x0, FloatFX y0, FloatFX x1, FloatFX y1, int red, int green, int blue, float alpha)
+	{
+		glColor4f(red, green, blue, alpha);
 
-	glBegin(GL_LINES);
+		glBegin(GL_LINES);
 
-	GlVector2D(point1.x, point1.y);
-	GlVector2D(point2.x, point2.y);
+		GlVector2D(x0, y0);
+		GlVector2D(x1, y1);
 
-	glEnd();
-}
+		glEnd();
+	}
 
-void DrawTriangle(FloatFX x0, FloatFX y0, FloatFX x1, FloatFX y1, FloatFX x2, FloatFX y2)
-{
-	DrawTriangle(x0, y0, x1, y1, x2, y2, 1.0f, 1.0f, 1.0f, 1.0f);
-}
+	void DrawLine(Vector2d point1, Vector2d point2, int red, int green, int blue, float alpha)
+	{
+		glColor4f(red, green, blue, alpha);
 
-void DrawTriangle(Vector2d point1, Vector2d point2, Vector2d point3)
-{
-	DrawTriangle(point1, point2, point3, 1.0f, 1.0f, 1.0f, 1.0f);
-}
+		glBegin(GL_LINES);
 
-void DrawTriangle(FloatFX x0, FloatFX y0, FloatFX x1, FloatFX y1, FloatFX x2, FloatFX y2, float alpha)
-{
-	DrawTriangle(x0, y0, x1, y1, x2, y2, 1.0f, 1.0f, 1.0f, alpha);
-}
+		GlVector2D(point1.x, point1.y);
+		GlVector2D(point2.x, point2.y);
 
-void DrawTriangle(Vector2d point1, Vector2d point2, Vector2d point3, float alpha)
-{
-	DrawTriangle(point1, point2, point3, 1.0f, 1.0f, 1.0f, alpha);
-}
+		glEnd();
+	}
 
-void DrawTriangle(FloatFX x0, FloatFX y0, FloatFX x1, FloatFX y1, FloatFX x2, FloatFX y2, int red, int green, int blue, float alpha)
-{
-	glBegin(GL_LINES);
+	void DrawTriangle(FloatFX x0, FloatFX y0, FloatFX x1, FloatFX y1, FloatFX x2, FloatFX y2)
+	{
+		DrawTriangle(x0, y0, x1, y1, x2, y2, 1.0f, 1.0f, 1.0f, 1.0f);
+	}
 
-	glColor4f(red, green, blue, alpha);
+	void DrawTriangle(Vector2d point1, Vector2d point2, Vector2d point3)
+	{
+		DrawTriangle(point1, point2, point3, 1.0f, 1.0f, 1.0f, 1.0f);
+	}
 
-	GlVector2D(x0, y0);
-	GlVector2D(x1, y1);
+	void DrawTriangle(FloatFX x0, FloatFX y0, FloatFX x1, FloatFX y1, FloatFX x2, FloatFX y2, float alpha)
+	{
+		DrawTriangle(x0, y0, x1, y1, x2, y2, 1.0f, 1.0f, 1.0f, alpha);
+	}
 
-	GlVector2D(x1, y1);
-	GlVector2D(x2, y2);
+	void DrawTriangle(Vector2d point1, Vector2d point2, Vector2d point3, float alpha)
+	{
+		DrawTriangle(point1, point2, point3, 1.0f, 1.0f, 1.0f, alpha);
+	}
 
-	GlVector2D(x2, y2);
-	GlVector2D(x0, y0);
+	void DrawTriangle(FloatFX x0, FloatFX y0, FloatFX x1, FloatFX y1, FloatFX x2, FloatFX y2, int red, int green, int blue, float alpha)
+	{
+		glBegin(GL_LINES);
 
-	glEnd();
-}
+		glColor4f(red, green, blue, alpha);
 
-void DrawTriangle(Vector2d point1, Vector2d point2, Vector2d point3, int red, int green, int blue, float alpha)
-{
-	glBegin(GL_LINES);
+		GlVector2D(x0, y0);
+		GlVector2D(x1, y1);
 
-	glColor4f(red, green, blue, alpha);
+		GlVector2D(x1, y1);
+		GlVector2D(x2, y2);
 
-	GlVector2D(point1.x, point1.y);
-	GlVector2D(point2.x, point2.y);
-	GlVector2D(point3.x, point3.y);
+		GlVector2D(x2, y2);
+		GlVector2D(x0, y0);
 
-	glEnd();
-}
+		glEnd();
+	}
 
-void DrawTriangle(const Triangle& tri)
-{
-	glBegin(GL_LINES);
+	void DrawTriangle(Vector2d point1, Vector2d point2, Vector2d point3, int red, int green, int blue, float alpha)
+	{
+		glBegin(GL_LINES);
 
-	glColor3f(tri.red, tri.green, tri.blue);
+		glColor4f(red, green, blue, alpha);
 
-	std::cout << "X0: " << tri.points[0].x << "\t\tY0: " << tri.points[0].y << std::endl;
-	std::cout << "X1: " << tri.points[1].x << "\t\tY1: " << tri.points[1].y << std::endl;
-	std::cout << "X2: " << tri.points[2].x << "\t\tY2: " << tri.points[2].y << std::endl;
+		GlVector2D(point1.x, point1.y);
+		GlVector2D(point2.x, point2.y);
+		GlVector2D(point3.x, point3.y);
 
-	GlVector2D(tri.points[0].x, tri.points[0].y);
-	GlVector2D(tri.points[1].x, tri.points[1].x);
-	GlVector2D(tri.points[2].x, tri.points[2].x);
+		glEnd();
+	}
 
-	glEnd();
-}
+	void DrawTriangle(const Triangle& tri)
+	{
+		glBegin(GL_LINES);
 
-void FillTriangle(FloatFX x0, FloatFX y0, FloatFX x1, FloatFX y1, FloatFX x2, FloatFX y2)
-{
-	FillTriangle(x0, y0, x1, y1, x2, y2, 1.0f, 1.0f, 1.0f, 1.0f);
-}
+		glColor3f(tri.red, tri.green, tri.blue);
 
-void FillTriangle(Vector2d point1, Vector2d point2, Vector2d point3)
-{
-	FillTriangle(point1, point2, point3, 1.0f, 1.0f, 1.0f, 1.0f);
-}
+		std::cout << "X0: " << tri.points[0].x << "\t\tY0: " << tri.points[0].y << std::endl;
+		std::cout << "X1: " << tri.points[1].x << "\t\tY1: " << tri.points[1].y << std::endl;
+		std::cout << "X2: " << tri.points[2].x << "\t\tY2: " << tri.points[2].y << std::endl;
 
-void FillTriangle(FloatFX x0, FloatFX y0, FloatFX x1, FloatFX y1, FloatFX x2, FloatFX y2, float alpha)
-{
-	FillTriangle(x0, y0, x1, y1, x2, y2, 1.0f, 1.0f, 1.0f, alpha);
-}
+		GlVector2D(tri.points[0].x, tri.points[0].y);
+		GlVector2D(tri.points[1].x, tri.points[1].y);
+		GlVector2D(tri.points[2].x, tri.points[2].y);
 
-void FillTriangle(Vector2d point1, Vector2d point2, Vector2d point3, float alpha)
-{
-	FillTriangle(point1, point2, point3, 1.0f, 1.0f, 1.0f, alpha);
-}
+		glEnd();
+	}
 
-void FillTriangle(FloatFX x0, FloatFX y0, FloatFX x1, FloatFX y1, FloatFX x2, FloatFX y2, int red, int green, int blue, float alpha)
-{
-	glBegin(GL_TRIANGLES);
+	void FillTriangle(FloatFX x0, FloatFX y0, FloatFX x1, FloatFX y1, FloatFX x2, FloatFX y2)
+	{
+		FillTriangle(x0, y0, x1, y1, x2, y2, 1.0f, 1.0f, 1.0f, 1.0f);
+	}
 
-	glColor4f(red, green, blue, alpha);
+	void FillTriangle(Vector2d point1, Vector2d point2, Vector2d point3)
+	{
+		FillTriangle(point1, point2, point3, 1.0f, 1.0f, 1.0f, 1.0f);
+	}
 
-	GlVector2D(x0, y0);
-	GlVector2D(x1, y1);
-	GlVector2D(x2, y2);
+	void FillTriangle(FloatFX x0, FloatFX y0, FloatFX x1, FloatFX y1, FloatFX x2, FloatFX y2, float alpha)
+	{
+		FillTriangle(x0, y0, x1, y1, x2, y2, 1.0f, 1.0f, 1.0f, alpha);
+	}
 
-	glEnd();
-}
+	void FillTriangle(Vector2d point1, Vector2d point2, Vector2d point3, float alpha)
+	{
+		FillTriangle(point1, point2, point3, 1.0f, 1.0f, 1.0f, alpha);
+	}
 
-void FillTriangle(Vector2d point1, Vector2d point2, Vector2d point3, int red, int green, int blue, float alpha)
-{
-	glBegin(GL_TRIANGLES);
+	void FillTriangle(FloatFX x0, FloatFX y0, FloatFX x1, FloatFX y1, FloatFX x2, FloatFX y2, int red, int green, int blue, float alpha)
+	{
+		glBegin(GL_TRIANGLES);
 
-	glColor4f(red, green, blue, alpha);
+		glColor4f(red, green, blue, alpha);
 
-	GlVector2D(point1.x, point1.y);
-	GlVector2D(point2.x, point2.y);
-	GlVector2D(point3.x, point3.y);
+		GlVector2D(x0, y0);
+		GlVector2D(x1, y1);
+		GlVector2D(x2, y2);
 
-	glEnd();
+		glEnd();
+	}
+
+	void FillTriangle(Vector2d point1, Vector2d point2, Vector2d point3, int red, int green, int blue, float alpha)
+	{
+		glBegin(GL_TRIANGLES);
+
+		glColor4f(red, green, blue, alpha);
+
+		GlVector2D(point1.x, point1.y);
+		GlVector2D(point2.x, point2.y);
+		GlVector2D(point3.x, point3.y);
+
+		glEnd();
+	}
+
+	void FillTriangle(const Triangle& triangle)
+	{
+		glBegin(GL_TRIANGLES);
+
+		glColor3f(triangle.red, triangle.green, triangle.blue);
+
+		GlVector2D(triangle.points[0].x, triangle.points[0].y);
+		GlVector2D(triangle.points[1].x, triangle.points[1].y);
+		GlVector2D(triangle.points[2].x, triangle.points[2].y);
+
+		glEnd();
+	}
 }

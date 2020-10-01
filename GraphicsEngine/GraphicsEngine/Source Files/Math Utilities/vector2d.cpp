@@ -1,6 +1,6 @@
 #include "Vector2d.h"
 
-namespace KtStd
+namespace KtStd::Math
 {
 	
 }

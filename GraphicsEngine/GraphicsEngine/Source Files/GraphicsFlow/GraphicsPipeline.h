@@ -1,8 +1,18 @@
 #pragma once
-
 #include <GL/glut.h>
+
 #include "Graphing2D.h"
+#include "../Math Utilities/vector3d.h"
+#include "../Geometry/Mesh.h"
+#include "../Geometry/Transforms.h"
 
-void InitPipelining();
+using namespace KtStd::Geometry;
+using namespace KtStd::Math;
 
-void FramePipelineFlow();
+
+namespace KtStd::Graphics
+{
+	void InitPipelining();
+
+	void FramePipelineFlow();
+}

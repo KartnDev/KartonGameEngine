@@ -12,6 +12,7 @@
     <ClCompile Include="Source Files\GraphicsFlow\GraphicsPipeline.cpp" />
     <ClCompile Include="Source Files\Geometry\Transforms.cpp" />
     <ClCompile Include="Source Files\Math Utilities\matrix3x3.cpp" />
+    <ClCompile Include="Source Files\GraphicsFlow\Graphics3D.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source Files\Math Utilities\vector3d.h" />
@@ -25,5 +26,6 @@
     <ClInclude Include="Source Files\GraphicsFlow\GraphicsPipeline.h" />
     <ClInclude Include="Source Files\Geometry\Transforms.h" />
     <ClInclude Include="Source Files\Math Utilities\matrix3x3.h" />
+    <ClInclude Include="Source Files\GraphicsFlow\Graphics3D.h" />
   </ItemGroup>
 </Project>

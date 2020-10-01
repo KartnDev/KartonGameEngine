@@ -1,6 +1,6 @@
 #include "Vector3d.h"
 
-namespace KtStd
+namespace KtStd::Math
 {
 	Vector3d::Vector3d()
 	{

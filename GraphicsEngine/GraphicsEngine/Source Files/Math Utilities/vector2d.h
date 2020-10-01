@@ -2,7 +2,7 @@
 
 #include "../Common/FXTypes.h"
 
-namespace KtStd
+namespace KtStd::Math
 {
 	struct Vector2d
 	{

@@ -3,7 +3,7 @@
 #define MAT_COLS 4
 #define MAT_ROWS 4
 
-namespace KtStd
+namespace KtStd::Math
 {
 	void m4x4_AVX(float* A, float* B, float* C)
 	{

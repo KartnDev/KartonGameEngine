@@ -2,7 +2,7 @@
 #include "../Common/pchdr.h"
 #include "matrix4x4.h"
 
-namespace KtStd
+namespace KtStd::Math
 {
 
 	struct Vector3d

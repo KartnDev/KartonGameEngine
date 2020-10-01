@@ -2,7 +2,7 @@
 #include "CommonMathPreHeader.h"
 
 
-namespace KtStd
+namespace KtStd::Math
 {
 	struct matrix3x3
 	{

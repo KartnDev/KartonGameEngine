@@ -1,12 +1,17 @@
-#include "Triangle.h"
+#pragma once
 #include <vector>
 #include <filesystem>
+#include "Triangle.h"
+#include "../Math Utilities/vector3d.h"
 
+using namespace KtStd::Math;
 
-struct Mesh
+namespace KtStd::Geometry
 {
-	std::vector<Triangle> tris;
+	struct Mesh
+	{
+		std::vector<Triangle> tris;
 
-	bool LoadFromObjectFile(const std::string& sFileName);
-};
-
+		bool LoadFromObjectFile(const std::string& sFileName);
+	};
+}

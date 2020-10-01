@@ -1,6 +1,6 @@
 #include "matrix3x3.h"
 
-namespace KtStd
+namespace KtStd::Math
 {
 	void mmul_tiled_avx_unrolled(const int n, const float* left, const float* right, float* result) {
 		const int block_width = n >= 256 ? 512 : 256;

@@ -5,6 +5,7 @@
 #define WIN_X 0
 #define WIN_Y 0
 
+using namespace KtStd::Graphics;
 
 void init(void) {
 
@@ -15,8 +16,8 @@ void init(void) {
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 
-	//glOrtho(WIN_X, WIDTH, WIN_Y, HEIGHT, 1, -1);
-	gluOrtho2D(WIN_X, WIDTH, WIN_Y, HEIGHT);
+	glOrtho(WIN_X, WIDTH, WIN_Y, HEIGHT, 1, -1);
+	//gluOrtho2D(WIN_X, WIDTH, WIN_Y, HEIGHT);
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
@@ -28,7 +29,7 @@ void init(void) {
 void CallBackWindow(void)
 {
 	glClear(GL_COLOR_BUFFER_BIT);
-	
+
 	FramePipelineFlow();
 
 	glFlush();
