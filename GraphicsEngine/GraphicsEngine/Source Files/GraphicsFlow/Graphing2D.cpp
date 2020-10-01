@@ -109,9 +109,6 @@ namespace KtStd::Graphics
 
 		glColor3f(tri.red, tri.green, tri.blue);
 
-		std::cout << "X0: " << tri.points[0].x << "\t\tY0: " << tri.points[0].y << std::endl;
-		std::cout << "X1: " << tri.points[1].x << "\t\tY1: " << tri.points[1].y << std::endl;
-		std::cout << "X2: " << tri.points[2].x << "\t\tY2: " << tri.points[2].y << std::endl;
 
 		GlVector2D(tri.points[0].x, tri.points[0].y);
 		GlVector2D(tri.points[1].x, tri.points[1].y);

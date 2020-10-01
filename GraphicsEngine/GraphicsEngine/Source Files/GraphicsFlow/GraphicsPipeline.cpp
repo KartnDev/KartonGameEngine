@@ -1,5 +1,6 @@
 #include "GraphicsPipeline.h"
 #include <filesystem>
+#include <windows.h>
 #include <cmath>
 #include <algorithm>
 #include "Graphics3D.h"
@@ -89,31 +90,30 @@ namespace KtStd::Graphics
 
 	}
 
-	void FramePipelineFlow()
+	void FramePipelineFlow(float theta)
 	{
 		if (loaded)
 		{
+
 			for (auto element : mesh.tris)
 			{
-				Vector3d v{ 50.0f, 50.0f, 50.0f, 1.0f };
+				Vector3d v{ 300.0f, 200.0f, 100.0f, 1.0f };
 				auto elementNew = Ortho2DTris(element, 0.1f, 1000, 90);
+				RotateByY(elementNew, theta);
 
-				elementNew.points[0] *= 100;
-				elementNew.points[1] *= 100;
-				elementNew.points[2] *= 100;
+
+				elementNew.points[0] *= 50;
+				elementNew.points[1] *= 50;
+				elementNew.points[2] *= 50;
 
 				elementNew.points[0] += v;
 				elementNew.points[1] += v;
 				elementNew.points[2] += v;
 
-				for (size_t i = 0; i < 3; i++)
-				{
-					std::cout << "X" << i << ": " << elementNew.points[i].x << " " << i << "Y: " << elementNew.points[i].y << std::endl;
-				}
-				std::cout << std::endl;
 				DrawTriangle(elementNew);
-				
+
 			}
+
 		}
 	}
 }

@@ -1,9 +1,10 @@
 #include <GL/glut.h>
-
+#include <Windows.h>
 #include "GraphicsFlow/GraphicsPipeline.h"
 
 #define WIN_X 0
 #define WIN_Y 0
+
 
 using namespace KtStd::Graphics;
 
@@ -16,29 +17,43 @@ void init(void) {
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 
-	glOrtho(WIN_X, WIDTH, WIN_Y, HEIGHT, 1, -1);
-	//gluOrtho2D(WIN_X, WIDTH, WIN_Y, HEIGHT);
+	//glOrtho(WIN_X, WIDTH, WIN_Y, HEIGHT, 1, -1);
+	gluOrtho2D(WIN_X, WIDTH, WIN_Y, HEIGHT);
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
 }
-
+float theta = 0.0f;
 
 
 void CallBackWindow(void)
 {
 	glClear(GL_COLOR_BUFFER_BIT);
 
-	FramePipelineFlow();
+	FramePipelineFlow(theta);
 
 	glFlush();
-}
 
+}
+void process_Normal_Keys(int key, int x, int y)
+{
+	switch (key)
+	{
+	case 27:  break;
+	case 100: theta += 0.1; break;
+	}
+	CallBackWindow();
+}
 
 
 int main(int argc, char**argv) 
 {
+
+	HWND hWnd = GetConsoleWindow();
+	ShowWindow(hWnd, SW_SHOW);
+
+
 
 	glutInit(&argc, argv);
 	glutInitWindowPosition(10, 10);
@@ -51,6 +66,8 @@ int main(int argc, char**argv)
 	InitPipelining();
 
 	glutDisplayFunc(CallBackWindow);
+	glutSpecialFunc(process_Normal_Keys);
 	glutMainLoop();
-
+	
 }
+

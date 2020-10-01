@@ -14,5 +14,5 @@ namespace KtStd::Graphics
 {
 	void InitPipelining();
 
-	void FramePipelineFlow();
+	void FramePipelineFlow(float theta);
 }

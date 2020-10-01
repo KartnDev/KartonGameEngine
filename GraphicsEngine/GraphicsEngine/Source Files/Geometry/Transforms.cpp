@@ -22,9 +22,9 @@ namespace KtStd::Geometry
 		return res;
 	}
 
-	Vector2d Ortho2D(Vector3d vec, float zFar, float zNear, float thetaFoV)
+	Vector2d Ortho2D(const Vector3d& vec, float zFar, float zNear, float thetaFoV)
 	{
-		float fVal = 1.0f / tanf(1.5f);
+		float fVal = 1.0f / tanf(1.50f);
 		float qCoef = zFar / (zFar - zNear);
 
 		float zPointed = vec.z * qCoef - zNear * qCoef;
@@ -36,23 +36,71 @@ namespace KtStd::Geometry
 		return res;
 	}
 
-	Triangle Ortho2DTris(Triangle triangle, float fFar, float fNear, float thetaFoV)
+	Triangle Ortho2DTris(const Triangle& triangle, float ZFar, float ZNear, float thetaFoV)
 	{
 		Triangle res;
 
-		auto p0 = Ortho2D(triangle.points[0], fFar, fNear, thetaFoV);
+		auto p0 = Ortho2D(triangle.points[0], ZFar, ZNear, thetaFoV);
 		res.points[0].x = p0.x;
 		res.points[0].y = p0.y;
 
-		auto p1 = Ortho2D(triangle.points[1], fFar, fNear, thetaFoV);
+		auto p1 = Ortho2D(triangle.points[1], ZFar, ZNear, thetaFoV);
 		res.points[1].x = p1.x;
 		res.points[1].y = p1.y;
 
-		auto p2 = Ortho2D(triangle.points[2], fFar, fNear, thetaFoV);
+		auto p2 = Ortho2D(triangle.points[2], ZFar, ZNear, thetaFoV);
 		res.points[2].x = p2.x;
 		res.points[2].y = p2.y;
 
 		return res;
 	}
 
+	void RotateByZ(Triangle& triangle, float theta)
+	{
+		Matrix4X4 matRotZ{};
+
+		matRotZ.mat[0][0] = cosf(theta);
+		matRotZ.mat[0][1] = sinf(theta);
+		matRotZ.mat[1][0] = -sinf(theta);
+		matRotZ.mat[1][1] = cosf(theta);
+		matRotZ.mat[2][2] = 1;
+		matRotZ.mat[3][3] = 1;
+
+		triangle.points[0] = MultiplyMatrixVector(triangle.points[0], matRotZ);
+		triangle.points[1] = MultiplyMatrixVector(triangle.points[1], matRotZ);
+		triangle.points[2] = MultiplyMatrixVector(triangle.points[2], matRotZ);
+	}
+
+	void RotateByY(Triangle& triangle, float theta)
+	{
+		Matrix4X4 matRotY{};
+
+		matRotY.mat[0][0] = cosf(theta);
+		matRotY.mat[0][2] = sinf(theta);
+		matRotY.mat[1][1] = 1;
+		matRotY.mat[2][1] = -sinf(theta);
+		matRotY.mat[2][2] = cosf(theta);
+		matRotY.mat[3][3] = 1;
+
+		triangle.points[0] = MultiplyMatrixVector(triangle.points[0], matRotY);
+		triangle.points[1] = MultiplyMatrixVector(triangle.points[1], matRotY);
+		triangle.points[2] = MultiplyMatrixVector(triangle.points[2], matRotY);
+	}
+
+	void RotateByX(Triangle& triangle, float theta)
+	{
+		Matrix4X4 matRotX{};
+
+		matRotX.mat[0][0] = 1;
+		matRotX.mat[1][1] = cosf(theta);
+		matRotX.mat[1][2] = sinf(theta);
+		matRotX.mat[2][1] = -sinf(theta);
+		matRotX.mat[2][2] = cosf(theta);
+		matRotX.mat[3][3] = 1;
+
+		triangle.points[0] = MultiplyMatrixVector(triangle.points[0], matRotX);
+		triangle.points[1] = MultiplyMatrixVector(triangle.points[1], matRotX);
+		triangle.points[2] = MultiplyMatrixVector(triangle.points[2], matRotX);
+
+	}
 }

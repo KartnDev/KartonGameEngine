@@ -10,7 +10,11 @@ using namespace KtStd::Geometry;
 
 namespace KtStd::Geometry
 {
-	Vector2d Ortho2D(Vector3d vec, float zFar, float zNear, float thetaFoV);
+	Vector2d Ortho2D(const Vector3d& vec, float zFar, float zNear, float thetaFoV);
+	Triangle Ortho2DTris(const Triangle& triangle, float ZFar, float ZNear, float thetaFoV);
 
-	Triangle Ortho2DTris(Triangle triangle, float zFar, float zNear, float thetaFoV);
+	void RotateByZ(Triangle& triangle, float theta);
+	void RotateByY(Triangle& triangle, float theta);
+	void RotateByX(Triangle& triangle, float theta);
+
 }
