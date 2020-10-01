@@ -17,8 +17,8 @@ void init(void) {
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 
-	//glOrtho(WIN_X, WIDTH, WIN_Y, HEIGHT, 1, -1);
-	gluOrtho2D(WIN_X, WIDTH, WIN_Y, HEIGHT);
+	glOrtho(WIN_X, WIDTH, WIN_Y, HEIGHT, 1, -1);
+	//gluOrtho2D(WIN_X, WIDTH, WIN_Y, HEIGHT);
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
