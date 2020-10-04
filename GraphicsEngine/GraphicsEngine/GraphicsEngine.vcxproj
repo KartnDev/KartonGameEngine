@@ -29,10 +29,13 @@
   <ItemGroup>
     <ClCompile Include="Source Files\Geometry\Mesh.cpp" />
     <ClCompile Include="Source Files\Common\pchdr.h" />
+    <ClCompile Include="Source Files\Geometry\Plane.cpp" />
     <ClCompile Include="Source Files\Geometry\Transforms.cpp" />
+    <ClCompile Include="Source Files\GraphicsFlow\Camera.cpp" />
     <ClCompile Include="Source Files\GraphicsFlow\Graphics3D.cpp" />
     <ClCompile Include="Source Files\GraphicsFlow\GraphicsPipeline.cpp" />
     <ClCompile Include="Source Files\GraphicsFlow\Graphing2D.cpp" />
+    <ClCompile Include="Source Files\Math Utilities\Intersections.cpp" />
     <ClCompile Include="Source Files\Math Utilities\matrix3x3.cpp" />
     <ClCompile Include="Source Files\Math Utilities\matrix4x4.cpp" />
     <ClCompile Include="Source Files\main.cpp" />
@@ -42,11 +45,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source Files\Geometry\Mesh.h" />
+    <ClInclude Include="Source Files\Geometry\Plane.h" />
     <ClInclude Include="Source Files\Geometry\Transforms.h" />
+    <ClInclude Include="Source Files\GraphicsFlow\Camera.h" />
     <ClInclude Include="Source Files\GraphicsFlow\Graphics3D.h" />
     <ClInclude Include="Source Files\GraphicsFlow\GraphicsPipeline.h" />
     <ClInclude Include="Source Files\GraphicsFlow\Graphing2D.h" />
     <ClInclude Include="Source Files\Math Utilities\CommonMathPreHeader.h" />
+    <ClInclude Include="Source Files\Math Utilities\Intersections.h" />
     <ClInclude Include="Source Files\Math Utilities\matrix3x3.h" />
     <ClInclude Include="Source Files\Math Utilities\matrix4x4.h" />
     <ClInclude Include="Source Files\Common\FXTypes.h" />

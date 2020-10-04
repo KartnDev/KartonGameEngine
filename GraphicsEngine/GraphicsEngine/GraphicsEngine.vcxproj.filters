@@ -13,6 +13,9 @@
     <ClCompile Include="Source Files\Geometry\Transforms.cpp" />
     <ClCompile Include="Source Files\Math Utilities\matrix3x3.cpp" />
     <ClCompile Include="Source Files\GraphicsFlow\Graphics3D.cpp" />
+    <ClCompile Include="Source Files\Geometry\Plane.cpp" />
+    <ClCompile Include="Source Files\GraphicsFlow\Camera.cpp" />
+    <ClCompile Include="Source Files\Math Utilities\Intersections.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source Files\Math Utilities\vector3d.h" />
@@ -27,5 +30,8 @@
     <ClInclude Include="Source Files\Geometry\Transforms.h" />
     <ClInclude Include="Source Files\Math Utilities\matrix3x3.h" />
     <ClInclude Include="Source Files\GraphicsFlow\Graphics3D.h" />
+    <ClInclude Include="Source Files\Geometry\Plane.h" />
+    <ClInclude Include="Source Files\GraphicsFlow\Camera.h" />
+    <ClInclude Include="Source Files\Math Utilities\Intersections.h" />
   </ItemGroup>
 </Project>
