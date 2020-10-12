@@ -16,6 +16,8 @@
     <ClCompile Include="Source Files\Geometry\Plane.cpp" />
     <ClCompile Include="Source Files\GraphicsFlow\Camera.cpp" />
     <ClCompile Include="Source Files\Math Utilities\Intersections.cpp" />
+    <ClCompile Include="Source Files\Geometry\Point3D.cpp" />
+    <ClCompile Include="Source Files\Geometry\Point2D.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source Files\Math Utilities\vector3d.h" />
@@ -33,5 +35,7 @@
     <ClInclude Include="Source Files\Geometry\Plane.h" />
     <ClInclude Include="Source Files\GraphicsFlow\Camera.h" />
     <ClInclude Include="Source Files\Math Utilities\Intersections.h" />
+    <ClInclude Include="Source Files\Geometry\Point3D.h" />
+    <ClInclude Include="Source Files\Geometry\Point2D.h" />
   </ItemGroup>
 </Project>

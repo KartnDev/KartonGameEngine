@@ -30,6 +30,8 @@
     <ClCompile Include="Source Files\Geometry\Mesh.cpp" />
     <ClCompile Include="Source Files\Common\pchdr.h" />
     <ClCompile Include="Source Files\Geometry\Plane.cpp" />
+    <ClCompile Include="Source Files\Geometry\Point2D.cpp" />
+    <ClCompile Include="Source Files\Geometry\Point3D.cpp" />
     <ClCompile Include="Source Files\Geometry\Transforms.cpp" />
     <ClCompile Include="Source Files\GraphicsFlow\Camera.cpp" />
     <ClCompile Include="Source Files\GraphicsFlow\Graphics3D.cpp" />
@@ -46,6 +48,8 @@
   <ItemGroup>
     <ClInclude Include="Source Files\Geometry\Mesh.h" />
     <ClInclude Include="Source Files\Geometry\Plane.h" />
+    <ClInclude Include="Source Files\Geometry\Point2D.h" />
+    <ClInclude Include="Source Files\Geometry\Point3D.h" />
     <ClInclude Include="Source Files\Geometry\Transforms.h" />
     <ClInclude Include="Source Files\GraphicsFlow\Camera.h" />
     <ClInclude Include="Source Files\GraphicsFlow\Graphics3D.h" />
