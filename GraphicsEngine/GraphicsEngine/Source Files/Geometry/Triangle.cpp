@@ -3,14 +3,21 @@ namespace KtStd::Geometry
 {
 	Vector3d & Triangle::GetNormal()
 	{
-		Vector3d res;
+		Vector3d normal, line1, line2;
+		line1.x = this->points[1].x - this->points[0].x;
+		line1.y = this->points[1].y - this->points[0].y;
+		line1.z = this->points[1].z - this->points[0].z;
 
-		res.x = this->points[0].y * this->points[1].z - this->points[0].z * this->points[1].y;
-		res.y = this->points[0].z * this->points[1].x - this->points[0].x * this->points[1].z;
-		res.z = this->points[0].x * this->points[1].y - this->points[0].y * this->points[1].x;
+		line2.x = this->points[2].x - this->points[0].x;
+		line2.y = this->points[2].y - this->points[0].y;
+		line2.z = this->points[2].z - this->points[0].z;
 
-		res.Normailize();
+		normal.x = line1.y * line2.z - line1.z * line2.y;
+		normal.y = line1.z * line2.x - line1.x * line2.z;
+		normal.z = line1.x * line2.y - line1.y * line2.x;
 
-		return res;
+		normal.Normailize();
+
+		return normal;
 	}
 }

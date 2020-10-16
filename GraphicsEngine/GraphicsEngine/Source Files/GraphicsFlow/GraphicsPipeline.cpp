@@ -16,7 +16,7 @@ namespace KtStd::Graphics
 	void InitPipelining()
 	{
 		// Set All Start Pos
-		cam.camVec = { 1.0f, 1.0f, 1.0f, 1.0f };
+		cam.camVec.Normailize();
 
 		// Load Textures/Objects Region
 		const std::string absPath = R"(C:\Users\Dmitry\Documents\GitHub\KartonGameEngine\GraphicsEngine\GraphicsEngine\Resource Files\)";
@@ -34,18 +34,21 @@ namespace KtStd::Graphics
 
 				auto rotated = RotateByY(element, theta);
 
+
 				auto normalOfTri = rotated.GetNormal();
 
-				int dotted = normalOfTri.x * cam.camVec.x + normalOfTri.y * cam.camVec.y + normalOfTri.z * cam.camVec.z;
+				auto tt = normalOfTri.x * (rotated.points[0].x - cam.camVec.x) +
+					normalOfTri.y * (rotated.points[0].y - cam.camVec.y) +
+					normalOfTri.z * (rotated.points[0].z - cam.camVec.z);
 
-				if (dotted < 0)
+				if (tt < 0.0f)
 				{
 					auto elementNew = Ortho2DTris(rotated, 0.1f, 1000, 90);
 
 
-					elementNew.points[0] *= 60;
-					elementNew.points[1] *= 60;
-					elementNew.points[2] *= 60;
+					elementNew.points[0] *= 40;
+					elementNew.points[1] *= 40;
+					elementNew.points[2] *= 40;
 
 					elementNew.points[0] += v;
 					elementNew.points[1] += v;
