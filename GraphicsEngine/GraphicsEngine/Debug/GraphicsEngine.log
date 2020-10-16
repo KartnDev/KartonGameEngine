@@ -1,9 +1,2 @@
-﻿  Transforms.cpp
-  GraphicsPipeline.cpp
-c:\users\dmitry\documents\github\kartongameengine\graphicsengine\graphicsengine\source files\geometry\transforms.cpp(55): warning C4172: returning address of local variable or temporary: res
-c:\users\dmitry\documents\github\kartongameengine\graphicsengine\graphicsengine\source files\geometry\transforms.cpp(36): warning C4172: returning address of local variable or temporary: res
-c:\users\dmitry\documents\github\kartongameengine\graphicsengine\graphicsengine\source files\geometry\transforms.cpp(22): warning C4172: returning address of local variable or temporary: res
-c:\users\dmitry\documents\github\kartongameengine\graphicsengine\graphicsengine\source files\geometry\transforms.cpp(75): warning C4172: returning address of local variable or temporary: res
-c:\users\dmitry\documents\github\kartongameengine\graphicsengine\graphicsengine\source files\geometry\transforms.cpp(94): warning C4172: returning address of local variable or temporary: res
-c:\users\dmitry\documents\github\kartongameengine\graphicsengine\graphicsengine\source files\geometry\transforms.cpp(114): warning C4172: returning address of local variable or temporary: res
+﻿  GraphicsPipeline.cpp
   GraphicsEngine.vcxproj -> C:\Users\Dmitry\Documents\GitHub\KartonGameEngine\GraphicsEngine\Debug\GraphicsEngine.exe

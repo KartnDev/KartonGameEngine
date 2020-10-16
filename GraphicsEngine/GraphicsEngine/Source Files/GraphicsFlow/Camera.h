@@ -1,6 +1,13 @@
 ﻿#pragma once
+#include "../Math Utilities/vector3d.h"
 
-struct Camera
+using namespace KtStd::Math;
+
+
+namespace KtStd::Graphics
 {
-	
-};
+	struct Camera
+	{
+		Vector3d camVec;
+	};
+}
