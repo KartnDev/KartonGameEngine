@@ -1,7 +1,7 @@
 #include "Triangle.h"
 namespace KtStd::Geometry
 {
-	Vector3d & Triangle::GetNormal()
+	Vector3d & Triangle::GetNormal() const
 	{
 		Vector3d normal, line1, line2;
 		line1.x = this->points[1].x - this->points[0].x;

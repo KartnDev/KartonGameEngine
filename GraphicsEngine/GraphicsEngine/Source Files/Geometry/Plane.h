@@ -6,22 +6,24 @@
 
 using namespace KtStd::Math;
 using namespace KtStd::Geometry;
-
-struct PlaneVectorized
+namespace KtStd::Geometry
 {
-	Vector3d normalPlane;
-	Vector3d directVector;
-};
+	struct PlaneVectorized
+	{
+		Vector3d normalPlane;
+		Vector3d directVector;
+	};
 
-struct Plane3Points
-{
-	Point3D point1;
-	Point3D point2;
-	Point3D point3;
-};
+	struct Plane3Points
+	{
+		Point3D point1;
+		Point3D point2;
+		Point3D point3;
+	};
 
 
-struct PlaneTriangle
-{
-	Triangle planeTri;
-};
+	struct PlaneTriangle
+	{
+		Triangle planeTri;
+	};
+}
