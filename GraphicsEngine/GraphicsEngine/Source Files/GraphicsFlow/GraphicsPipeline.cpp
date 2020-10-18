@@ -17,6 +17,7 @@ namespace KtStd::Graphics
 	{
 		// Set All Start Pos
 		cam.camVec.Normailize();
+		cam.camVec = { 1.0f, 1.0f, 1.0f, 1.0f };
 
 		// Load Textures/Objects Region
 		const std::string absPath = R"(C:\Users\Dmitry\Documents\GitHub\KartonGameEngine\GraphicsEngine\GraphicsEngine\Resource Files\)";
@@ -25,39 +26,47 @@ namespace KtStd::Graphics
 
 	void FramePipelineFlow(float theta)
 	{
+		std::vector<Triangle> vecTrianglesToRaster;
 		if (loaded)
 		{
-
+			
 			for (auto element : mesh.tris)
 			{
 				Vector3d v{ 300.0f, 200.0f, 200.0f, 1.0f };
 
 				auto rotated = RotateByY(element, theta);
-
+				rotated = RotateByX(rotated, theta);
+				rotated = RotateByZ(rotated, theta);
 
 				auto normalOfTri = rotated.GetNormal();
 
-				auto tt = normalOfTri.x * (rotated.points[0].x - cam.camVec.x) +
-					normalOfTri.y * (rotated.points[0].y - cam.camVec.y) +
-					normalOfTri.z * (rotated.points[0].z - cam.camVec.z);
+				auto vCameraRay = rotated.points[0] + cam.camVec;
 
-				if (tt < 0.0f)
+				if (normalOfTri.Dot(vCameraRay) < 0.0f)
 				{
 					auto elementNew = Ortho2DTris(rotated, 0.1f, 1000, 90);
 
 
-					elementNew.points[0] *= 40;
-					elementNew.points[1] *= 40;
-					elementNew.points[2] *= 40;
+					elementNew.points[0] *= 70;
+					elementNew.points[1] *= 70;
+					elementNew.points[2] *= 70;
 
 					elementNew.points[0] += v;
 					elementNew.points[1] += v;
 					elementNew.points[2] += v;
 
-					DrawTriangle(elementNew);
+					vecTrianglesToRaster.push_back(elementNew);
 				}
+
 			}
 
+
+			for (auto& triProjected : vecTrianglesToRaster)
+			{
+				DrawTriangle(triProjected);
+			}
 		}
+
+		
 	}
 }

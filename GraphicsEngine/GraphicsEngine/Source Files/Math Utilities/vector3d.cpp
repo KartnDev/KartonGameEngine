@@ -38,7 +38,7 @@ namespace KtStd::Math
 		return Equals(other);
 	}
 
-	inline FloatFX Vector3d::Dot(const Vector3d& rhs) const
+	FloatFX Vector3d::Dot(const Vector3d& rhs) const
 	{
 		return this->x * rhs.x + this->y * rhs.y + this->z * rhs.z;
 	}

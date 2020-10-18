@@ -18,7 +18,7 @@ namespace KtStd::Math
 		inline bool Equals(const Vector3d& rhs) const;
 		inline bool operator==(const Vector3d& rhs) const;
 
-		inline FloatFX Dot(const Vector3d& rhs) const;
+		FloatFX Dot(const Vector3d& rhs) const;
 
 		
 
