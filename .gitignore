@@ -21,3 +21,4 @@ GraphicsEngine/.vs/GraphicsEngine/v16/ipch/AutoPCH/6c1e29b3b1e79092/MAIN.ipch
 *.ipch
 GraphicsEngine/.vs/GraphicsEngine/v15/ipch/AutoPCH/37aa4b9d2b79a8c3/VECTOR3D.ipch
 GraphicsEngine/.vs/GraphicsEngine/v15/ipch/AutoPCH/732f532ca5fde8fe/GRAPHING2D.ipch
+*.ipch
